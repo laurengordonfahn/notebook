@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notebook</title>
+</head>
+<body>
+    <h2>Make Notes Simply! <br>
+        Simply Make Notes!
+    </h2>
+    <form>
+        <p>Lable Your Note:</p><input type="text" placeholder="Note Title" name="note_title"><br>
+        <p>Create Your Note:</p><input type="text" placeholder="Note" name="new_note"><br>
+        <button id="new_note_button">Submit</button>
+    </form>
+
+    <h3>Your Notebook Log:</h3>
+    <div class="new_updated_notes"> </div>
+
+    {% if not notes %}
+
+        <p>You do not have any notes at this time! </p>
+
+    {% else %}
+
+        {% for note in notes %}
+            <form>
+                <button class="delete_note" value="{{ note.id }}"> Delete </button>
+                <div class="decorate_note_div">
+    
+                    <div> {{ note.date_at }} </div>
+                    <div> {{ note.title }} </div>
+                    <div >
+                        <p> {{ note.note }} <p>
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+
+    
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/static/javascript/index.js" type="text/javascript"> </script>
+</body>
+
+</html>
