@@ -16,7 +16,10 @@ def commit_note_to_db(note_title, new_note):
     db.session.add(note)
     db.session.commit()
 
-    note_info = Note.query.filter_by(title=note_title).order_by(desc(title.date_at)).limit(1).first()
+    if title:
+        note_info = Note.query.filter_by(title=note_title).order_by(desc(title.date_at)).limit(1).first()
+    else: 
+        note_info = Note.query.order_by(desc(Note.date_at)).first()
 
     
     return note_info
