@@ -4,7 +4,7 @@ from test_model import connect_to_db, db, example_note_data
 
 import unittest
 
-class TestswithoutDB(unittest.TestCase):
+class TestsWithoutDB(unittest.TestCase):
     """ Tests that don't require the db. """
 
     #Get the Flask test client and data set up
@@ -13,7 +13,7 @@ class TestswithoutDB(unittest.TestCase):
         app.secrete_key= "rainy tuesday"
         self.client = app.test_client()
 
-     def test_empty_db(self):
+    def test_empty_db(self):
         """ Run this test before the creation of the fake database to see what appears before the creation of the database."""
         result = self.client.get('/')
         self.assertIn("You do not have any notes at this time!", result.data)
@@ -54,7 +54,7 @@ class AddingMessage(TestCase):
     """ Flask test for adding a message """
     def add_note(self, title, note):
         """ Method takes in a note title and a note  """
-        result = self.client.post('/', data={'title': 'An other Note', note='A note that does not have an apostrophy but does have a \"quote in it\" that I escaped but I should handle that in the code!'}, follow_redirects=True)
+        result = self.client.post('/', data=dict(title=title, note=note), follow_redirects=True)
 
     def test_add_note(self):
         result = self.add_note("Test Suite Note", "This is a new note added by the test suite")
@@ -67,5 +67,5 @@ class AddingMessage(TestCase):
 
 
 if __name__ == "__main__":
-    
+    import unittest
     unittest.main()

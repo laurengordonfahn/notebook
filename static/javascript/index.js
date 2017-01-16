@@ -1,15 +1,18 @@
 //// Update the DOM with new note /////
 function upDateNotes(response){
-    
+    console.log(response.id);
+    console.log(response.title);
+    console.log(response.content);
+
     var add_note_form = 
         "<form>" +
-            "<button class=\"delete_note\" value=\""+ response.note_id +"\"> Delete </button>" +
+            "<button class=\"delete_note\" value=\""+ response.id +"\"> Delete </button>" +
             "<div class=\"decorate_note_div\">" +
 
-                "<div>" + response.note_date +"</div>" +
-                "<div>" + response.note_title + "</div>" +
+                "<div>" + response.created_at +"</div>" +
+                "<div>" + response.title + "</div>" +
                 "<div>" +
-                    "<p>" + response.note + "<p>" +
+                    "<p>" + response.content + "</p>" +
                 "</div>" +
             "</div>" +
         "</form>";
@@ -30,8 +33,9 @@ function addNewNoteToDB(event){
         "new_note": new_note
     };
 
-    $.post("/add_note", formInputs, upDateNotes);
+    $.post("/add_note.json", formInputs, upDateNotes);
 }
+
 
 $("#new_note_button").on('click', addNewNoteToDB);
 

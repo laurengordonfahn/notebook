@@ -28,8 +28,8 @@ class Note(db.Model):
     id = db.Column(db.Integer, primary_key = True, 
                                autoincrement = True)
     title = db.Column(db.String(200), nullable=False)
-    note = db.Column(db.Text, nullable=False)
-    date_at = db.Column(AwareDateTime, default=db.func.now(), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    created_at = db.Column(AwareDateTime, default=db.func.now(), nullable=False)
 
 
 if __name__ == "__main__":

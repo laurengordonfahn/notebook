@@ -14,9 +14,9 @@ app.secret_key = "rainy tuesday"
 def index():
     """ Render index.html populate with notes from DB """
     notes = gather_all_notes_from_db()
-    return render_template("index.html", notes = notes)
+    return render_template("index.html", notes=notes)
 
-@app.route('/add_note', methods=['POST'])
+@app.route('/add_note.json', methods=['POST'])
 def add_note():
     """ Add note to DB return note info to Javascript to update Dom """
     
@@ -25,12 +25,13 @@ def add_note():
 
     note_db_info = commit_note_to_db(note_title, new_note)
 
+
     response = { 
 
-        "note": note_db_info.note ,
-        "note_title": note_db_info.title,
-        "note_id": note_db_info.id, 
-        "note_date": note_db_info.date_at 
+        "content": note_db_info.content ,
+        "title": note_db_info.title,
+        "id": note_db_info.id, 
+        "created_at": note_db_info.created_at 
 
     }
 
