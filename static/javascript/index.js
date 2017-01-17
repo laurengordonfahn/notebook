@@ -2,18 +2,27 @@ $(document).ready(function(){
     //// Update the DOM with new note /////
     function upDateNotes(response){
     
-        var add_note_form = 
-            "<form>" +
+        var add_note_form = // "<form>" +
                 "<button class=\"delete_note\" value=\""+ response.id +"\"> Delete  </button>" +
                 "<div class=\"decorate_note_div\">" +
     
-                    "<div>" + response.created_at +"</div>" +
-                    "<div>" + response.title + "</div>" +
-                    "<div>" +
-                        "<p>" + response.content + "</p>" +
-                    "</div>" +
+                    $("<div></div>").text(response.created_at).html() +
+                    $("<div></div>").text(response.title).html() +
+                    $("<div><p></p></div>").text(response.content).html() +
                 "</div>" +
             "</form>";
+
+            // "<form>" +
+            //     "<button class=\"delete_note\" value=\""+ response.id +"\"> Delete  </button>" +
+            //     "<div class=\"decorate_note_div\">" +
+    
+            //         "<div>" + response.created_at +"</div>" +
+            //         "<div>" + response.title + "</div>" +
+            //         "<div>" +
+            //             "<p>" + response.content + "</p>" +
+            //         "</div>" +
+            //     "</div>" +
+            // "</form>";
     
         $(".new_updated_notes").prepend(add_note_form);
     }
