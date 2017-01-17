@@ -60,6 +60,6 @@ $(document).ready(function(){
     
     }
     
-    $(".delete_note").on('click', removeNoteFromDB);
+    $('body').on('click', ".delete_note", removeNoteFromDB);
 });
 
