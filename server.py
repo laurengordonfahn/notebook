@@ -39,7 +39,7 @@ def add_note():
     return jsonify(response)
 
 
-@app.route('/delete_note', methods=['POST'])
+@app.route('/delete_note', methods=['DELETE'])
 def delete_note():
     """Remove note from DB"""
     note_id = request.form.get("note_id")
@@ -47,7 +47,7 @@ def delete_note():
     delete_note_from_db(note_id)
     
     #TODO : Do I need to return anything? 
-    return 
+    return jsonify({"none": "none"})
 
 
 if __name__ == "__main__":

@@ -1,8 +1,5 @@
 //// Update the DOM with new note /////
 function upDateNotes(response){
-    console.log(response.id);
-    console.log(response.title);
-    console.log(response.content);
 
     var add_note_form = 
         "<form>" +
@@ -43,7 +40,7 @@ $("#new_note_button").on('click', addNewNoteToDB);
 
 
 ///// Remove note from list of notes //////
-function removeNote(){
+function removeNote(response){
     
     console.log("removeNote running");
     
@@ -52,7 +49,13 @@ function removeNoteFromDB(){
     var note_id = $(this).val();
     $(this).closest('form').remove();
 
-    $.post('/delete_note', {'note_id': note_id}, removeNote);
+    // $.post('/delete_note', {'note_id': note_id}, removeNote);
+    $.ajax({
+        url: '/delete_note',
+        type: 'DELETE',
+        data: {'note_id': note_id},
+        success: removeNote
+    })
 
 }
 
