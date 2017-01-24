@@ -16,13 +16,7 @@ def commit_note_to_db(note_title, new_note):
     db.session.add(note)
     db.session.commit()
 
-    if note_title:
-        
-        note_info = Note.query.filter_by(title=note_title).order_by(desc(Note.created_at)).limit(1).first()
-    else: 
-        note_info = Note.query.order_by(desc(Note.created_at)).first()
-    
-    return note_info
+    return note
 
 
 #### '/delete_note' helper functions #####
