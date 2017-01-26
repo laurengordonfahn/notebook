@@ -61,12 +61,10 @@ function removeNoteFromDB(){
 
 $(document).ready(function(){
     $('body').on('click', '#new_note_button', addNewNoteToDB);
-});
-
-$(document).ready(function(){
     $('body').on('click', '.delete_note', removeNoteFromDB);
-
 });
+
+
 
 
 
