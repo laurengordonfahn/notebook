@@ -12,17 +12,6 @@ $(document).ready(function(){
                 "</div>" +
             "</form>";
 
-            // "<form>" +
-            //     "<button class=\"delete_note\" value=\""+ response.id +"\"> Delete  </button>" +
-            //     "<div class=\"decorate_note_div\">" +
-    
-            //         "<div>" + response.created_at +"</div>" +
-            //         "<div>" + response.title + "</div>" +
-            //         "<div>" +
-            //             "<p>" + response.content + "</p>" +
-            //         "</div>" +
-            //     "</div>" +
-            // "</form>";
     
         $(".new_updated_notes").prepend(add_note_form);
     }
