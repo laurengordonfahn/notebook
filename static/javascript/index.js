@@ -1,4 +1,5 @@
-//// Update the DOM with new note /////
+
+ //// Update the DOM with new note /////
 function upDateNotes(response){
 
     var add_note_form = 
@@ -51,7 +52,7 @@ function removeNoteFromDB(){
         type: 'DELETE',
         data: {'note_id': note_id},
         success: removeNote
-    })
+    });
 
 }
 
@@ -62,4 +63,3 @@ $(document).ready(function(){
     $('body').on('click', '#new_note_button', addNewNoteToDB);
     $('body').on('click', '.delete_note', removeNoteFromDB);
 });
-
