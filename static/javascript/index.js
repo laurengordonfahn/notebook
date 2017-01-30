@@ -34,10 +34,6 @@ function addNewNoteToDB(event){
 }
 
 
-$("#new_note_button").on('click', addNewNoteToDB);
-
-
-
 
 ///// Remove note from list of notes //////
 function removeNote(response){
@@ -59,6 +55,11 @@ function removeNoteFromDB(){
 
 }
 
-$(".delete_note").on('click', removeNoteFromDB);
 
+////// when read execute code //////
+
+$(document).ready(function(){
+    $('body').on('click', '#new_note_button', addNewNoteToDB);
+    $('body').on('click', '.delete_note', removeNoteFromDB);
+});
 
