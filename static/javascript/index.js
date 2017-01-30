@@ -2,7 +2,7 @@ $(document).ready(function(){
     //// Update the DOM with new note /////
     function upDateNotes(response){
     
-        var add_note_form = // "<form>" +
+        var add_note_form =  "<form>" +
                 "<button class=\"delete_note\" value=\""+ response.id +"\"> Delete  </button>" +
                 "<div class=\"decorate_note_div\">" +
     
