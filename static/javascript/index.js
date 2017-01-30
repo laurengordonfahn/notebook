@@ -20,7 +20,7 @@ function upDateNotes(response){
 
 
 function addNewNoteToDB(event){
-
+    event.preventDefault();
     var form = $(this).closest("form");
         var note_title = form.find("[name = \"note_title\"]").val();
     var new_note = form.find("[name = \"new_note\"]").val();
@@ -31,9 +31,14 @@ function addNewNoteToDB(event){
         "new_note": new_note
     };
 
-    $.post("/add_note.json", formInputs, upDateNotes);
-}  
-    
+
+    $.post("/notes", formInputs, upDateNotes);
+}
+
+
+$("#new_note_button").on('click', addNewNoteToDB);
+
+
 ///// Remove note from list of notes //////
 function removeNote(response){
     
@@ -41,15 +46,15 @@ function removeNote(response){
     
 }
 
-function removeNoteFromDB(){
+function removeNoteFromDB(event){
+    event.preventDefault();
+
     var note_id = $(this).val();
     $(this).closest('form').remove();
-
-    // $.post('/delete_note', {'note_id': note_id}, removeNote);
+    
     $.ajax({
-        url: '/delete_note',
+        url: '/notes/' + note_id,
         type: 'DELETE',
-        data: {'note_id': note_id},
         success: removeNote
     });
 

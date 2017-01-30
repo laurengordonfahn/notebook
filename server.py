@@ -16,7 +16,7 @@ def index():
     notes = gather_all_notes_from_db()
     return render_template("index.html", notes=notes)
 
-@app.route('/add_note.json', methods=['POST'])
+@app.route('/notes', methods=['POST'])
 def add_note():
     """ Add note to DB return note info to Javascript to update Dom """
     
@@ -39,12 +39,11 @@ def add_note():
     return jsonify(response)
 
 
-@app.route('/delete_note', methods=['DELETE'])
-def delete_note():
+@app.route('/notes/<id>', methods=['DELETE'])
+def delete_note(id):
     """Remove note from DB"""
-    note_id = request.form.get("note_id")
-
-    delete_note_from_db(note_id)
+    
+    delete_note_from_db(id)
     
     #TODO : Do I need to return anything? 
     return jsonify({"none": "none"})
