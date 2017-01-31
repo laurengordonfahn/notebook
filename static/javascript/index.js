@@ -32,16 +32,15 @@ function addNewNoteToDB(event){
     };
 
     $.post("/add_note.json", formInputs, upDateNotes);
-}
-
-
-
+}  
+    
 ///// Remove note from list of notes //////
 function removeNote(response){
     
     console.log("removeNote running");
     
 }
+
 function removeNoteFromDB(){
     var note_id = $(this).val();
     $(this).closest('form').remove();
