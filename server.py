@@ -42,20 +42,23 @@ def add_note():
     note_title = request.form.get("note_title")
     new_note = request.form.get("new_note")
 
-    note_db_info = commit_note_to_db(note_title, new_note)
+    note = commit_note_to_db(note_title, new_note)
 
 
-    response = { 
+    return jsonify(format_note(note))
 
-        "content": note_db_info.content ,
-        "title": note_db_info.title,
-        "id": note_db_info.id, 
-        "created_at": note_db_info.created_at 
+@app.route('/notes/edit/<id>', methods=['PUT'])
+def update_edited_note_in_BD(id):
+    """ Replace Note in Database by ID with Edited Note and Title """
+    
+    note_title = request.form.get('title')
+    note_content = request.form.get('content')
+    
+    note = update_note(id, note_title, note_content)
 
-    }
+    return jsonify(format_note(note))
 
-
-    return jsonify(response)
+    #return render_template("index.html", notes=notes)
 
 
 @app.route('/notes/reorder')
@@ -83,6 +86,13 @@ def delete_note(id):
      
     return jsonify({"none": "none"})
 
+def format_note(note):
+    return {
+        "content": note.content ,
+        "title": note.title,
+        "id": note.id, 
+        "created_at": note.created_at 
+    }
 
 if __name__ == "__main__":
 

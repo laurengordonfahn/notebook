@@ -4,6 +4,9 @@ import pytz
 #for serilizing objects
 
 
+#for onupdate
+import datetime
+
 db = SQLAlchemy()
 
 def connect_to_db(app, url = 'postgresql:///notebook'):
@@ -31,7 +34,7 @@ class Note(db.Model):
                                autoincrement = True)
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    created_at = db.Column(AwareDateTime, default=db.func.now(), nullable=False)
+    created_at = db.Column(AwareDateTime, default=db.func.now(), nullable=False, onupdate=datetime.datetime.now)
 
 
 
