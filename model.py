@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 #python World Time Zone
 import pytz 
+#for serilizing objects
+
 
 db = SQLAlchemy()
 
@@ -30,6 +32,7 @@ class Note(db.Model):
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(AwareDateTime, default=db.func.now(), nullable=False)
+
 
 
 if __name__ == "__main__":

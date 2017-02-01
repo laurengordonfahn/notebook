@@ -23,16 +23,29 @@
 
         <div class="new_updated_notes"> </div>
     
-        {% if not notes %}
+            {% if not notes %}
     
-            <p>You do not have any notes at this time!</p>
+                <p>You do not have any notes at this time!</p>
     
-        {% else %}
-    
-            {% for note in notes %}
-                <form action="notes/{{ note.id }}" method="delete">
-                    <div class="decorate_note_div">
+            {% else %}
+        
+                <form>
+                
+                    <select id='ascend_descend' name='order_by'>
+
+            
+                        <option value='most_recent'> Order-By Most Recent </option>
+                        <option value='oldest'> Order-By Oldest </option>
                     
+
+                    </select>
+
+                </form>
+                <div id="contain_all_notes">
+                {% for note in notes %}
+                    
+                    <div class="decorate_note_div">
+                        
                         <div>
                             {{ note.created_at }} 
                         </div>
@@ -49,9 +62,9 @@
                         <button class="delete_note" value="{{ note.id }}"> Delete </button>
                         <br>
                     </div>
-                </form>
-            {% endfor %}
-    
+                    
+                {% endfor %}
+                </div>
         
         {% endif %}
     </div>
