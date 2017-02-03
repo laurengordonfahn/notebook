@@ -2,7 +2,9 @@
 
 ##Project Description:
 
-A simple flask app that allows a user to create, view, and delete notes. One page fully dynamic. A simple building block application for future projects to be built on-top of.
+A simple flask app that allows a user to create, view, reorder by date, and delete notes. One page fully dynamic. A simple building block application for future projects to be built on-top of.
+
+Features coming soon, make note able to be edited. 
 
 
 ## Getting Started:
@@ -36,13 +38,16 @@ blinker==1.4
 click==6.6
 Flask==0.12
 Flask-DebugToolbar==0.10.0
+flask-marshmallow==0.7.0
 Flask-SQLAlchemy==2.1
 itsdangerous==0.24
 Jinja2==2.8.1
 MarkupSafe==0.23
+marshmallow==2.12.2
 pkg-resources==0.0.0
 psycopg2==2.6.2
 pytz==2016.10
+six==1.10.0
 SQLAlchemy==1.1.4
 Werkzeug==0.11.15
 ```
@@ -65,7 +70,7 @@ Werkzeug==0.11.15
     $ createdb notebooktest
     $ python test_model.py
 ```
-2) Run the unittests, Jasmine tests are underconstruciton at this time
+2) Run the unittests, Jasmine tests are under construction at this time
 ```
    $ python test_server.py
 ```
@@ -78,13 +83,20 @@ Werkzeug==0.11.15
 * Unittest- Testing Framework
 * Javascript- Front end language
 * JQuery- Javascript Library
-* Jasmine- Testing Framework (underconstruciton)
+* Jasmine- Testing Framework (under construction)
+
+## Current Features Completed/In-Progress:
+* Add a new note with automatic display (complete)
+* Delete a note (complete)
+* Change the date order notes are displayed (complete)
+* Edit and existing note (in-progress)
 
 ## Future Build-Out:
 * Build-Out test suites in both Unittests and Jasmine - there are never too many good tests.
 * Add Facebook sign-in
 * Confirm before deletion of a note.
 * Tighten endpoints 
+* Enable users to be able to create different folders to organize notes
 * Deploy on Heroku
 
 
