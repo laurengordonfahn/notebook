@@ -36,9 +36,6 @@ function addNewNoteToDB(event){
 }
 
 
-$("#new_note_button").on('click', addNewNoteToDB);
-
-
 ///// Remove note from list of notes //////
 function removeNote(response){
     
