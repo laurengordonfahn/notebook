@@ -44,7 +44,6 @@ def add_note():
 
     note = commit_note_to_db(note_title, new_note)
 
-
     return jsonify(format_note(note))
 
 @app.route('/notes/edit/<id>', methods=['PUT'])
@@ -57,8 +56,6 @@ def update_edited_note_in_BD(id):
     note = update_note(id, note_title, note_content)
 
     return jsonify(format_note(note))
-
-    #return render_template("index.html", notes=notes)
 
 
 @app.route('/notes/reorder')
@@ -74,7 +71,7 @@ def descend_order():
         notes =  Note.query.order_by(asc(Note.created_at)).all()
 
     result = users_schema.dump(notes)
-
+   
     return jsonify(result.data)
 
 

@@ -1,33 +1,44 @@
  //// Update the DOM with new note /////
 function upDateNotes(response){
 
-    var add_note_form = 
-        "<form>" +
-            "<div class=\"decorate_note_div\">" +
-                $("<div></div>").text(response.created_at).html() +
-                $("<div></div>").text(response.title).html() + 
-                $("<div><p></p></div>").text(response.content).html() + 
-                "<button class=\"delete_note\" value=\""+ response.id +"\"> Delete </button>" +
+    var tmpl =
+            "<form>" +
+                "<div class=\"decorate_note_div\">" +
+                "<div>{{created_at}}</div>" +
+                "<div>" +
+                    "<h4>Note Title:</h4>" +
+                    "<p class=\"note_title_{{id}}\">{{title}}</p>" +
+                "</div>" +
+                 "<div>" +
+                    "<h4>Note:</h4>" + 
+                    "<p class=\"notes_from_db_{{id}}\">{{content}}</p>"+
+                "</div>" +
+                "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
+                "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
                 "<br>" +
-            "</div>" +
-        "</form>";
+                "</div>" +
+            "</form>";
 
-    $(".new_updated_notes").prepend(add_note_form);
+    var content = Mustache.render(tmpl, response);
+
+    $(".add_new_note").prepend(content);
 }
 
 
 function addNewNoteToDB(event){
     event.preventDefault();
+
     var form = $(this).closest("form");
-        var note_title = form.find("[name = \"note_title\"]").val();
+    var note_title = form.find("[name = \"note_title\"]").val();
     var new_note = form.find("[name = \"new_note\"]").val();
 
+    form.find('[name = "note_title"]').val("");
+    form.find('[name = "new_note"]').val("");
 
     var formInputs = {
         "note_title": note_title,
         "new_note": new_note
     };
-
 
     $.post("/notes", formInputs, upDateNotes);
 }
@@ -38,29 +49,34 @@ function addNewNoteToDB(event){
 function updateNoteOrder(response){
     
     $("#contain_all_notes").empty();
-    
-    for(var i=0; i < response.length; i++){
-        var div_create = "<div class=\"decorate_note_div\">" +
-                    $("<div></div>").text(response[i].created_at).html() + 
 
-                    "<div>" +
-                        "<h4>Note Title:</h4>" +
-                        $("<p class=\"note_title\"></p>").text(response[i].title).html()+
-                    "</div>" +
 
-                    "<div>" +
-                        "<h4>Note:</h4>" + 
-                        $("<p class=\"notes_from_db\"></p>").text(response[i].content).html()+
-    
-                    "</div>" +
+    var data = {
+        items: response
+    };
 
-                    "<button class=\"delete_note\" value=\""+ response[i].id  + "\"> Delete </button>" +
-                    "<br>" +
-                "</div>";
-        
-        $("#contain_all_notes").append(div_create);
-        
-    }
+    var template = ""+
+    "{{#items}}" +
+      "<div class=\"decorate_note_div\">"+
+        "<div>{{created_at}}</div>" +
+        "<div>" +
+          "<h4>Note Title:</h4>" +
+          "<p class=\"note_title_{{id}}\">{{title}}</p>" +
+        "</div>" +
+        "<div>" +
+            "<h4>Note:</h4>" + 
+            "<p class=\"notes_from_db_{{id}}\">{{content}}</p>"+
+        "</div>" +
+        "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
+        "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
+        "<br>" +
+      "</div>" +
+    "{{/items}}";
+
+
+    var content = Mustache.render(template,data);
+
+    $('#contain_all_notes').append(content);
     
 }
 
@@ -119,6 +135,8 @@ function updateDBwithEditedNote(event){
     // Check if button has class 'save_edits' then toggle back to 'edit_note'
     if ($(this).hasClass('save_edits')){
         $(this).html('Edit Note').toggleClass('save_edits edit_button');
+        $(title_id).attr("contenteditable", "false");
+        $(note_content_id).attr("contenteditable", "false");
     }
 
     
@@ -134,12 +152,6 @@ function updateDBwithEditedNote(event){
 
 }
     
-///// Remove note from list of notes //////
-function removeNote(response){
-    
-    console.log("removeNote running");
-    
-}
 
 ///// Remove note from list of notes //////
 function removeNote(response){
@@ -152,7 +164,7 @@ function removeNoteFromDB(event){
     event.preventDefault();
 
     var note_id = $(this).val();
-    $(this).closest('form').remove();
+    $(this).closest('.decorate_note_div').remove();
     
     $.ajax({
         url: '/notes/' + note_id,
