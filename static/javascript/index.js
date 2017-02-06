@@ -2,22 +2,20 @@
 function upDateNotes(response){
 
     var tmpl =
-            "<form>" +
                 "<div class=\"decorate_note_div\">" +
                 "<div>{{created_at}}</div>" +
                 "<div>" +
                     "<h4>Note Title:</h4>" +
-                    "<p class=\"note_title_{{id}}\">{{title}}</p>" +
+                    "<p id=\"note_title_{{id}}\">{{title}}</p>" +
                 "</div>" +
                  "<div>" +
                     "<h4>Note:</h4>" + 
-                    "<p class=\"notes_from_db_{{id}}\">{{content}}</p>"+
+                    "<p id=\"notes_from_db_{{id}}\">{{content}}</p>"+
                 "</div>" +
                 "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
                 "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
                 "<br>" +
-                "</div>" +
-            "</form>";
+                "</div>";
 
     var content = Mustache.render(tmpl, response);
 
@@ -100,9 +98,11 @@ function editExhistingNote(event){
     var note_id = $(this).val();
 
     var note_title = '#note_title_' + note_id;
+    console.log(note_title);
 
     var notes_from_db = '#notes_from_db_' + note_id;
-    
+    console.log(notes_from_db);
+
     $(note_title).attr("contenteditable", "true");
     $(notes_from_db).attr("contenteditable", "true");
 
