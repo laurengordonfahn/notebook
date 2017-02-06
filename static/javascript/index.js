@@ -96,12 +96,9 @@ function editExhistingNote(event){
     event.preventDefault();
 
     var note_id = $(this).val();
-
     var note_title = '#note_title_' + note_id;
-    console.log(note_title);
-
     var notes_from_db = '#notes_from_db_' + note_id;
-    console.log(notes_from_db);
+    
 
     $(note_title).attr("contenteditable", "true");
     $(notes_from_db).attr("contenteditable", "true");
