@@ -35,20 +35,19 @@ users_schema = UserSchema(many=True)
 @app.route('/')
 def index():
     """Render index.html for sigin-in """
+    if not current_user():
+        return render_template("index.html", app_id=facebook_app_id())
+    return render_template("index.html", app_id=facebook_app_id(), current_user=current_user().user_id)
 
-    return render_template("index.html", app_id=facebook_app_id(), current_user=current_user())
-
-@app.route('/notes')
+@app.route('/notes', methods=['GET'])
 def get_notes():
     """ Render index.html populate with notes from DB """
 
-    access_token = request.form.get("accessToken")
-
-    print access_token, "RRRRRRRRRRRR"
+    access_token = request.args.get("accessToken")
 
     load_user(access_token)
     
-    notes = gather_all_notes_from_db(current_user())
+    notes = gather_all_notes_from_db(current_user().user_id)
     
     return render_template("index.html", notes=notes)
 
@@ -59,7 +58,8 @@ def add_note():
     note_title = request.form.get("note_title")
     new_note = request.form.get("new_note")
 
-    note = commit_note_to_db(current_user(), note_title, new_note)
+    note = commit_note_to_db(current_user().user_id, note_title, new_note) 
+    print note , "NOTE NOTE NOTE NOTE NOTE SEVER "
 
     return jsonify(format_note(note))
 
@@ -70,7 +70,7 @@ def update_edited_note_in_BD(id):
     note_title = request.form.get('title')
     note_content = request.form.get('content')
     
-    note = update_note(current_user(), id, note_title, note_content)
+    note = update_note(current_user().user_id, id, note_title, note_content)
 
     return jsonify(format_note(note))
 
@@ -96,7 +96,7 @@ def descend_order():
 def delete_note(id):
     """Remove note from DB"""
     
-    delete_note_from_db(current_user(), id)
+    delete_note_from_db(current_user().user_id, id)
      
     return jsonify({"none": "none"})
 

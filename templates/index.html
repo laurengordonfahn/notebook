@@ -24,51 +24,46 @@
             <button id="new_note_button">Submit</button>
         </form>
 
+
         <h3>Your Notebook Log:</h3>
         <div class="notebook_border">
+            <form>
+                <select id='ascend_descend' name='order_by'>
+                    <option value='most_recent'> Order-By Most Recent </option>
+                    <option value='oldest'> Order-By Oldest </option>
+                </select>
+            </form>
 
-            {% if not notes %}
-
-                <p>You do not have any notes at this time!</p>
-
-            {% else %}
-        
-                <form>
-                    <select id='ascend_descend' name='order_by'>
-                        <option value='most_recent'> Order-By Most Recent </option>
-                        <option value='oldest'> Order-By Oldest </option>
-                    </select>
-                </form>
-
-                <div id="contain_all_notes">
-                <div class="add_new_note"> </div>
-                {% for note in notes %}
+            <div id="contain_all_notes">
+            <div class="add_new_note"> </div>
+            {% for note in notes %}
+                
+                <div class="decorate_note_div">
                     
-                    <div class="decorate_note_div">
-                        
-                        <div>
-                            {{ note.created_at }} 
-                        </div>
+                    <div>
+                        {{ note.created_at }} 
+                    </div>
 
-                        <div> 
-                            <h4>Note Title:</h4> <div class="editable_{{ note.id }}" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
-                        </div>
+                    <div> 
+                        <h4>Note Title:</h4> <div class="editable_{{ note.id }}" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
+                    </div>
 
-                        <div >
-                            <h4>Note:</h4> 
-                            <div class="editable_{{ note.id }}" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
-                        </div>
-                    
-            
-                        <button class="edit_button" value="{{ note.id }}"> Edit Note </button>
-                        <button class="delete_note" value="{{ note.id }}"> Delete </button>
-                        <br>
+                    <div >
+                        <h4>Note:</h4> 
+                        <div class="editable_{{ note.id }}" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
                     </div>
                 
-                {% endfor %}
+        
+                    <button class="edit_button" value="{{ note.id }}"> Edit Note </button>
+                    <button class="delete_note" value="{{ note.id }}"> Delete </button>
+                    <br>
                 </div>
+            
+            {% endfor %}
+            </div>
+            
 
-            {% endif %}
+
     {% else %}
        <div id="fb-root"></div>
             <script>(function(d, s, id) {
@@ -81,7 +76,7 @@
             </script>
                <!--  <button id="log_in_button" value="{{ app_id }}">Log In With Facebook</button> --> 
         
-          <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+          <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="medium" scope="email" data-show-faces="false" data-auto-logout-link="false"></div>
 
     {% endif %}
 

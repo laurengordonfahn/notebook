@@ -93,7 +93,7 @@ function testAPI(response) {
     console.log('THIS IS THE ACCESS TOKEN');
     console.log(accessToken);
     var data = {'accessToken': accessToken}
-    $.post("/notes", data, postRequest);
+    $.get("/notes", data, postRequest);
     console.log("After POST Request");
 
 
@@ -111,7 +111,8 @@ function postRequest(){
 
 
  //// Update the DOM with new note /////
-function upDateNotes(response){
+function updateNotes(response){
+    console.log("updateNotes running");
 
     var tmpl =
                 "<div class=\"decorate_note_div\">" +
@@ -130,6 +131,7 @@ function upDateNotes(response){
                 "</div>";
 
     var content = Mustache.render(tmpl, response);
+    console.log(content);
 
     $(".add_new_note").prepend(content);
 }
@@ -150,7 +152,7 @@ function addNewNoteToDB(event){
         "new_note": new_note
     };
 
-    $.post("/notes", formInputs, upDateNotes);
+    $.post("/notes", formInputs, updateNotes);
 }
 
 
