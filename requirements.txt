@@ -14,3 +14,10 @@ pytz==2016.10
 six==1.10.0
 SQLAlchemy==1.1.4
 Werkzeug==0.11.15
+appdirs==1.4.0
+-e git+https://github.com/mobolic/facebook-sdk.git@43b609ee034195c794521e23792532471551c383#egg=facebook_sdk
+packaging==16.8
+pkg-resources==0.0.0
+pyparsing==2.1.10
+requests==2.13.0
+six==1.10.0
