@@ -57,10 +57,11 @@ FB.init({
 //
 // These three cases are handled in the callback function.
 
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
+// FB.getLoginStatus(function(response) {
+//     statusChangeCallback(response);
+// });
 
+// The below punctution is needed to contain something to avoid Syntax error
 };
 
 // // Load the SDK asynchronously
@@ -76,14 +77,14 @@ function facebookLogin(){
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    // function postRequest(){
-    //     console.log("In post request");
-    //     window.location = '/notes';
-    // }
 }
 
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
+function postRequest(){
+    console.log("In post request");
+}
+
 function testAPI(response) {
     console.log('Welcome!  Fetching your information.... ');
 
@@ -103,12 +104,6 @@ function testAPI(response) {
         'Thanks for logging in, ' + response.name + '!';
     });
 }
-
-function postRequest(){
-        console.log("In post request");
-        // window.location = '/notes';
-    }
-
 
  //// Update the DOM with new note /////
 function updateNotes(response){
@@ -286,6 +281,30 @@ function removeNoteFromDB(event){
 
 }
 
+/// Sign-Out with Facebook //////
+function signed_out(){
+    console.log("signed_out running")
+}
+
+function fbLogoutUser(){
+    FB.getLoginStatus(function(response) {
+                console.log("In getLoginStatus");
+                console.log(response);
+                if (response && response.status === 'connected') {
+                    console.log("connected");
+                    FB.logout(function(response) {
+                        // user is now logged out
+                        console.log("logout function");
+                        $.ajax({
+                            url: '/log_out',
+                            type: 'DELETE',
+                            success: signed_out
+                        });
+                    });
+                }
+    });
+}
+
 ////// when ready execute code //////
 
 $(document).ready(function(){
@@ -295,4 +314,5 @@ $(document).ready(function(){
     $('body').on('click', '.edit_button', editExhistingNote);
     $('body').on('click', '.save_edits', updateDBwithEditedNote);
     $('body').on('click', '.delete_note', removeNoteFromDB);
+    $('body').on('click', '#fblogout', fbLogoutUser);
 });

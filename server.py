@@ -39,21 +39,20 @@ def index():
         
         return render_template("index.html", app_id=facebook_app_id())
 
-    else:
-        access_token = request.args.get("accessToken")
-
-        load_user(access_token)
-    
-        #TODO: Will this go to the get not the post?
-        return redirect('/notes')
-
 @app.route('/notes', methods=['GET'])
 def get_notes():
     """ Render index.html populate with notes from DB """
+    if not current_user():
+        access_token = request.args.get("accessToken")
+
+        load_user(accesss_token)
+
+        return redirect('/notes')
+    else:
+
+        notes = gather_all_notes_from_db(current_user().user_id)
     
-    notes = gather_all_notes_from_db(current_user().user_id)
-    
-    return render_template("index.html", notes=notes)
+        return render_template("index.html", notes=notes)
 
 @app.route('/notes', methods=['POST'])
 def add_note():

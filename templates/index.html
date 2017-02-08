@@ -14,7 +14,8 @@
     </div>
 
     {% if 'current_user' in session %} 
-        <li><a href="#" onClick="fbLogoutUser()">Sign Out</a></li>
+        <button id="fblogout">Sign Out</button>
+
         <form action="/notes" method="post">
             <p>Lable Your Note:</p><input id="title_for_new_note" type="text" placeholder="Note Title" name="note_title">
             <br>
@@ -76,7 +77,10 @@
             </script>
                <!--  <button id="log_in_button" value="{{ app_id }}">Log In With Facebook</button> --> 
         
-          <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="medium" scope="email" data-show-faces="false" data-auto-logout-link="false"></div>
+          <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="medium" data-auto-logout-link scope="email" data-show-faces="false" data-auto-logout-link="false"  onlogin="checkLoginState"></div>
+          <!-- https://gist.github.com/heldrida/6232556 -->
+         <!--  http://stackoverflow.com/questions/5680048/logout-button-in-facebook-sdk -->
+         <!-- <div> <fb:login-button autologoutlink="true"></fb:login-button></div> -->
 
     {% endif %}
 
