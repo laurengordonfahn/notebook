@@ -28,11 +28,15 @@ def facebook_app_id():
 ####### GET '/notes' helper functions ########
 def gather_all_notes_from_db(user_id):
     print user_id, "USER ID USER ID USER ID "
-    note = Note.query.filter_by(user_id=user_id).one_or_none()
+
+    
+    note = Note.query.filter_by(user_id=user_id).all()
     print note, "RRRRRRRRRRR"
+    if note:
+        return Note.query.filter_by(user_id=user_id).order_by(desc(Note.created_at)).all()
     if not note:
         return None
-    return Note.query.filter_by(user_id=user_id).order_by(desc(Note.created_at)).all()
+    
 
 ##### 'POST /notes' helper functions #####
 def load_user(access_token):

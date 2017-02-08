@@ -106,7 +106,7 @@ function testAPI(response) {
 
 function postRequest(){
         console.log("In post request");
-        window.location = '/notes';
+        // window.location = '/notes';
     }
 
 
@@ -173,11 +173,11 @@ function updateNoteOrder(response){
         "<div>{{created_at}}</div>" +
         "<div>" +
           "<h4>Note Title:</h4>" +
-          "<p class=\"note_title_{{id}}\">{{title}}</p>" +
+          "<p id=\"note_title_{{id}}\">{{title}}</p>" +
         "</div>" +
         "<div>" +
             "<h4>Note:</h4>" + 
-            "<p class=\"notes_from_db_{{id}}\">{{content}}</p>"+
+            "<p id=\"notes_from_db_{{id}}\">{{content}}</p>"+
         "</div>" +
         "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
         "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
@@ -191,6 +191,7 @@ function updateNoteOrder(response){
     $('#contain_all_notes').append(content);
     
 }
+
 
 function ascendDescend(event){
 

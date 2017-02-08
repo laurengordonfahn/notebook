@@ -36,16 +36,20 @@ users_schema = UserSchema(many=True)
 def index():
     """Render index.html for sigin-in """
     if not current_user():
+        
         return render_template("index.html", app_id=facebook_app_id())
-    return render_template("index.html", app_id=facebook_app_id(), current_user=current_user().user_id)
+
+    else:
+        access_token = request.args.get("accessToken")
+
+        load_user(access_token)
+    
+        #TODO: Will this go to the get not the post?
+        return redirect('/notes')
 
 @app.route('/notes', methods=['GET'])
 def get_notes():
     """ Render index.html populate with notes from DB """
-
-    access_token = request.args.get("accessToken")
-
-    load_user(access_token)
     
     notes = gather_all_notes_from_db(current_user().user_id)
     
@@ -82,7 +86,7 @@ def descend_order():
     order_by = request.args.get("order_by") 
     
     if order_by == "most_recent":
-        notes = gather_all_notes_from_db() 
+        notes = gather_all_notes_from_db(current_user().user_id) 
         
     else:
         notes =  Note.query.order_by(asc(Note.created_at)).all()
