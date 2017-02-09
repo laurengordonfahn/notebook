@@ -5,14 +5,11 @@ var app_id
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
+    
     if (response.status === 'connected') {
       // Logged into your app and Facebook
         
-      testAPI(response);
+      onFBLogin(response);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -20,92 +17,60 @@ function statusChangeCallback(response) {
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      
-      FB.getLoginStatus(function(response) {
-        $.ajax({
-            url: '/log_out',
-            type: 'DELETE',
-            success: sign_out
-        });
+        FB.getLoginStatus(function(response) {
+            $.ajax({
+                url: '/log_out',
+                type: 'DELETE',
+                success: sign_out
+            });
             console.log("In getLoginStatus");
 
         });
 
-      document.getElementById('status').innerHTML = 'Please log ' +
+        document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.'
-
 
     }
 }
 
-
-// This function is called when someone finishes with the Login
-// Button.  See the onlogin handler attached to it in the sample
-// code below.
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
 }
 
-
 window.fbAsyncInit = function() {
-FB.init({
-    appId      : '{app_id}',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-});
-
-// Now that we've initialized the JavaScript SDK, we call 
-// FB.getLoginStatus().  This function gets the state of the
-// person visiting this page and can return one of three states to
-// the callback you provide.  They can be:
-//
-// 1. Logged into your app ('connected')
-// 2. Logged into Facebook, but not your app ('not_authorized')
-// 3. Not logged into Facebook and can't tell if they are logged into
-//    your app or not.
-//
-// These three cases are handled in the callback function.
-
-// FB.getLoginStatus(function(response) {
-//     statusChangeCallback(response);
-// });
-
-// The below punctution is needed to contain something to avoid Syntax error
+    FB.init({
+        appId      : '{app_id}',
+        cookie     : true,                 
+        xfbml      : true,  
+        version    : 'v2.8' 
+    });
 };
 
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
+
 function postRequest(){
-    console.log("In post request");
-     window.location = "/";
+    
+    window.location.replace("/");
 }
 
-function testAPI(response) {
-    console.log('Welcome!  Fetching your information.... ');
-
-    /// TODO TAKE CARE OF THIS SECTION  SEEEK postREQUEST
+function onFBLogin(response) {
 
     var accessToken = response['authResponse']['accessToken'];
-    console.log('THIS IS THE ACCESS TOKEN');
-    console.log(accessToken);
     var data = {"accessToken": accessToken}
+
     $.get("/log_in", data, postRequest);
-    console.log("After POST Request");
-
-
+   
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
+        console.log('Successful login for: ' + response.name);
+        document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
 }
 
  //// Update the DOM with new note /////
 function updateNotes(response){
+
     console.log("updateNotes running");
 
     var tmpl =
@@ -125,13 +90,13 @@ function updateNotes(response){
                 "</div>";
 
     var content = Mustache.render(tmpl, response);
-    console.log(content);
 
     $(".add_new_note").prepend(content);
 }
 
 
 function addNewNoteToDB(event){
+    
     event.preventDefault();
 
     var form = $(this).closest("form");
@@ -156,7 +121,6 @@ function updateNoteOrder(response){
     
     $("#contain_all_notes").empty();
 
-
     var data = {
         items: response
     };
@@ -178,7 +142,6 @@ function updateNoteOrder(response){
         "<br>" +
       "</div>" +
     "{{/items}}";
-
 
     var content = Mustache.render(template,data);
 
@@ -202,16 +165,15 @@ function ascendDescend(event){
 
 ////// Edit Exhisting Note //////
 function editExhistingNote(event){
+
     event.preventDefault();
 
     var note_id = $(this).val();
     var note_title = '#note_title_' + note_id;
     var notes_from_db = '#notes_from_db_' + note_id;
-    
 
     $(note_title).attr("contenteditable", "true");
     $(notes_from_db).attr("contenteditable", "true");
-
 
     // Check if button has class 'edit_button' then toggle back to 'save_edits'
     if ($(this).hasClass('edit_button')){
@@ -223,11 +185,13 @@ function editExhistingNote(event){
 
 ////// Update DB with Edited Notes Content ////
 function editAndUpDateNotes(response){
+
     console.log("editAndUpdateNotes running");
 }
 
 
 function updateDBwithEditedNote(event){
+
     event.preventDefault();
 
     var note_id = $(this).val();
@@ -236,8 +200,6 @@ function updateDBwithEditedNote(event){
     var note_title = $(title_id).html();
     var note_content = $(note_content_id).html();
 
-
-
     // Check if button has class 'save_edits' then toggle back to 'edit_note'
     if ($(this).hasClass('save_edits')){
         $(this).html('Edit Note').toggleClass('save_edits edit_button');
@@ -245,7 +207,6 @@ function updateDBwithEditedNote(event){
         $(note_content_id).attr("contenteditable", "false");
     }
 
-    
     $.ajax({
         url: "/notes/edit/" + note_id,
         type: 'PUT',
@@ -267,6 +228,7 @@ function removeNote(response){
 }
 
 function removeNoteFromDB(event){
+
     event.preventDefault();
 
     var note_id = $(this).val();
@@ -277,16 +239,13 @@ function removeNoteFromDB(event){
         type: 'DELETE',
         success: removeNote
     });
-
 }
 
 /// Sign-Out with Facebook //////
 function sign_out(){
-    console.log("signed_out running")
-     window.location = "/";
+
+    window.location.replace("/");
 }
-
-
 
 ////// when ready execute code //////
 

@@ -48,41 +48,51 @@
 
         <h3>Your Notebook Log:</h3>
         <div class="notebook_border">
-            <form>
-                <select id='ascend_descend' name='order_by'>
-                    <option value='most_recent'> Order-By Most Recent </option>
-                    <option value='oldest'> Order-By Oldest </option>
-                </select>
-            </form>
 
-            <div id="contain_all_notes">
-            <div class="add_new_note"> </div>
-            {% for note in notes %}
-                
-                <div class="decorate_note_div">
+            {% if not notes %}
+
+                <p> You Don't have Any Notes Saved At This Time. </p>
+
+            {% else %}
+
+                <form>
+                    <select id='ascend_descend' name='order_by'>
+                        <option value='most_recent'> Order-By Most Recent </option>
+                        <option value='oldest'> Order-By Oldest </option>
+                    </select>
+                </form>
+
+                <div id="contain_all_notes">
+                <div class="add_new_note"> </div>
+
+                {% for note in notes %}
                     
-                    <div>
-                        {{ note.created_at }} 
-                    </div>
+                    <div class="decorate_note_div">
+                        
+                        <div>
+                            {{ note.created_at }} 
+                        </div>
 
-                    <div> 
-                        <h4>Note Title:</h4> <div class="editable_{{ note.id }}" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
-                    </div>
+                        <div> 
+                            <h4>Note Title:</h4> <div class="editable_{{ note.id }}" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
+                        </div>
 
-                    <div >
-                        <h4>Note:</h4> 
-                        <div class="editable_{{ note.id }}" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
+                        <div >
+                            <h4>Note:</h4> 
+                            <div class="editable_{{ note.id }}" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
+                        </div>
+                    
+            
+                        <button class="edit_button" value="{{ note.id }}"> Edit Note </button>
+                        <button class="delete_note" value="{{ note.id }}"> Delete </button>
+                        <br>
                     </div>
                 
-        
-                    <button class="edit_button" value="{{ note.id }}"> Edit Note </button>
-                    <button class="delete_note" value="{{ note.id }}"> Delete </button>
-                    <br>
-                </div>
-            
-            {% endfor %}
-            </div>
+                {% endfor %}
 
+                </div>
+                
+            {% endif %}
 
     {% endif %}
 

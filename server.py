@@ -40,11 +40,9 @@ def index():
         
         return render_template("index.html", app_id=facebook_app_id())
     
-    if current_user():
-
-        notes = gather_all_notes_from_db(current_user().id)
+    notes = gather_all_notes_from_db(current_user().id)
         
-        return render_template("index.html", app_id=facebook_app_id(), notes=notes)
+    return render_template("index.html", app_id=facebook_app_id(), notes=notes)
 
 
 @app.route('/log_in')
