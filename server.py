@@ -43,8 +43,8 @@ def index():
         print "/ is running"
 
         notes = gather_all_notes_from_db(current_user().user_id)
-    
-        return render_template("index.html", notes=notes)
+        print notes
+        return render_template("index.html", app_id=facebook_app_id(), notes=notes)
 
 
 @app.route('/log_in')

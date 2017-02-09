@@ -79,6 +79,7 @@ FB.init({
 // successful.  See statusChangeCallback() for when this call is made.
 function postRequest(){
     console.log("In post request");
+     window.location = "/";
 }
 
 function testAPI(response) {
@@ -280,6 +281,7 @@ function removeNoteFromDB(event){
 /// Sign-Out with Facebook //////
 function sign_out(){
     console.log("signed_out running")
+     window.location = "/";
 }
 
 
