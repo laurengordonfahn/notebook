@@ -29,11 +29,9 @@ def facebook_app_id():
 def gather_all_notes_from_db(user_id):
     
     note = Note.query.filter_by(user_id=user_id).order_by(desc(Note.created_at)).all()
-
     if not note:
         return None
     return note
-    
 
 ##### 'POST /notes' helper functions #####
 def load_user(access_token):
@@ -50,7 +48,6 @@ def load_user(access_token):
         new_user = User(facebook_id=facebook_id, name=profile['name'], email=profile['email'])
         db.session.add(new_user)
         db.session.commit()
-    user = User.query.filter_by(facebook_id=facebook_id).first()
     session['current_user'] = user.user_id
     session['access_token'] = access_token
     return 
