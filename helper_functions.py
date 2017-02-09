@@ -18,6 +18,7 @@ def current_user():
 
         return None
 
+
 ###### facebook sign in helper functions #####
 def facebook_app_id():
     """ Retrieve app_id from local environment """
@@ -28,7 +29,7 @@ def facebook_app_id():
 
 ####### GET '/notes' helper functions ########
 def gather_all_notes_from_db(user_id):
-    """Gather all notes by user id"""
+    """Gather all notes by user id """
     
     note = Note.query.filter_by(user_id=user_id).order_by(desc(Note.created_at)).all()
 
@@ -57,7 +58,7 @@ def load_user(access_token):
         db.session.add(new_user)
         db.session.commit()
 
-    session['current_user'] = user.user_id
+    session['current_user'] = user.id
     session['access_token'] = access_token
 
     return 
@@ -93,7 +94,6 @@ def update_note(user_id, note_id, note_title, note_content):
 
         note_content = " "
 
-    #TODO CORRECT THIS KNOW THAT HAVE SIGNIN
     note = get_or_abort(Note, note_id)
     note.user_id = user_id
     note.title = note_title

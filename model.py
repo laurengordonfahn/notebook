@@ -27,7 +27,7 @@ class AwareDateTime(db.TypeDecorator):
 class User(db.Model):
     __tablename__ = "users"
 
-    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(150), nullable=False)
     facebook_id = db.Column(db.String(30), nullable=False, unique=True)
@@ -37,7 +37,7 @@ class Note(db.Model):
 
     id = db.Column(db.Integer, primary_key = True, 
                                autoincrement = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(AwareDateTime, default=db.func.now(), nullable=False, onupdate=datetime.datetime.now)
