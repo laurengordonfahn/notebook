@@ -31,7 +31,7 @@
           <!-- https://gist.github.com/heldrida/6232556 -->
          <!--  http://stackoverflow.com/questions/5680048/logout-button-in-facebook-sdk -->
     {% if not 'current_user' in session %}
-         <div class='notebook_border'><p> What is written is a wish that can be shared</p><p> A note is a dream at it's begining </p></div>
+         <div class='notebook_border'><p> The written word is a wish that can be shared</p><p> A note is a dream at it's begining </p></div>
     {% endif %}
 
     {% if 'current_user' in session %} 
@@ -59,7 +59,7 @@
             <div id="contain_all_notes">
 
             <div class="add_new_note"> <p>You do not have any notes saved at this time. </p> </div>
-            
+
             {% if notes %}
                 {% for note in notes %}
                     

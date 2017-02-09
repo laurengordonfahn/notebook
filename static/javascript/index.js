@@ -19,7 +19,7 @@ function statusChangeCallback(response) {
       // they are logged into this app or not.
         FB.getLoginStatus(function(response) {
             $.ajax({
-                url: '/log_out',
+                url: '/session',
                 type: 'DELETE',
                 success: sign_out
             });
@@ -59,7 +59,7 @@ function onFBLogin(response) {
     var accessToken = response['authResponse']['accessToken'];
     var data = {"accessToken": accessToken}
 
-    $.get("/log_in", data, postRequest);
+    $.get("/session", data, postRequest);
    
     FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);

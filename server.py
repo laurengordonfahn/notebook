@@ -45,7 +45,7 @@ def index():
     return render_template("index.html", app_id=facebook_app_id(), notes=notes)
 
 
-@app.route('/log_in')
+@app.route('/session')
 def login():
     """ Creates User Session and New Account if needed """
 
@@ -124,7 +124,7 @@ def delete_note(id):
      
     return jsonify({"none": "none"})
 
-@app.route('/log_out', methods=['DELETE'])
+@app.route('/session', methods=['DELETE'])
 def log_out():
     """ Delete 'current_user' from session and redirect homepage """
 
