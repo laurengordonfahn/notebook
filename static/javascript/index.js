@@ -10,7 +10,8 @@ function statusChangeCallback(response) {
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
-      // Logged into your app and Facebook.
+      // Logged into your app and Facebook
+        
       testAPI(response);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -36,6 +37,7 @@ function statusChangeCallback(response) {
 
     }
 }
+
 
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample

@@ -113,7 +113,7 @@ def log_out():
     """ Delete 'current_user' from session and redirect homepage """
     del session['current_user']
     print current_user(), "CURRENT USER SHOULD BE NONE"
-    return redirect('/')
+    return jsonify({'none': 'none'})
 
 
 if __name__ == "__main__":
