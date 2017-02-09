@@ -7,29 +7,20 @@ function statusChangeCallback(response) {
     console.log(response);
     
     if (response.status === 'connected') {
-      // Logged into your app and Facebook
-        
+      
       onFBLogin(response);
     } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      
     } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
+      
         FB.getLoginStatus(function(response) {
             $.ajax({
                 url: '/session',
                 type: 'DELETE',
-                success: sign_out
+                success: afterSignOut
             });
             console.log("In getLoginStatus");
-
         });
-
-        document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.'
-
     }
 }
 
@@ -38,6 +29,7 @@ function checkLoginState() {
       statusChangeCallback(response);
     });
 }
+
 
 window.fbAsyncInit = function() {
     FB.init({
@@ -53,6 +45,16 @@ function postRequest(){
     
     window.location.replace("/");
 }
+
+(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                  
+                if (d.getElementById(id)) return;
+                  
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1899079457005459";
+                fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 function onFBLogin(response) {
 
@@ -243,9 +245,9 @@ function removeNoteFromDB(event){
 }
 
 /// Sign-Out with Facebook //////
-function sign_out(){
-
-    window.location.replace("/");
+function afterSignOut(){
+    console.log("pass");
+    window.location.assign("/");
 }
 
 ////// when ready execute code //////
