@@ -38,21 +38,26 @@ def index():
     if not current_user():
         
         return render_template("index.html", app_id=facebook_app_id())
-
-@app.route('/notes', methods=['GET'])
-def get_notes():
-    """ Render index.html populate with notes from DB """
-    if not current_user():
-        access_token = request.args.get("accessToken")
-
-        load_user(accesss_token)
-
-        return redirect('/notes')
-    else:
+    
+    if current_user():
+        print "/ is running"
 
         notes = gather_all_notes_from_db(current_user().user_id)
     
         return render_template("index.html", notes=notes)
+
+
+@app.route('/log_in')
+def login():
+    """ Creates User Session and New Account if needed """
+
+
+    access_token = request.args.get("accessToken")
+
+    load_user(access_token)
+
+    return redirect('/')
+
 
 @app.route('/notes', methods=['POST'])
 def add_note():
@@ -103,10 +108,11 @@ def delete_note(id):
      
     return jsonify({"none": "none"})
 
-@app.route('/log_out')
+@app.route('/log_out', methods=['DELETE'])
 def log_out():
     """ Delete 'current_user' from session and redirect homepage """
     del session['current_user']
+    print current_user(), "CURRENT USER SHOULD BE NONE"
     return redirect('/')
 
 

@@ -27,11 +27,9 @@ def facebook_app_id():
 
 ####### GET '/notes' helper functions ########
 def gather_all_notes_from_db(user_id):
-    print user_id, "USER ID USER ID USER ID "
-
     
     note = Note.query.filter_by(user_id=user_id).all()
-    print note, "RRRRRRRRRRR"
+
     if note:
         return Note.query.filter_by(user_id=user_id).order_by(desc(Note.created_at)).all()
     if not note:
@@ -48,13 +46,14 @@ def load_user(access_token):
     facebook_id = profile['id']
 
     #if profile_id in the database then sign them in if not load this information
-    user = User.query.filter_by(facebook_id=facebook_id).first()
+    user = User.query.filter_by(facebook_id=facebook_id).one_or_none()
     if not user:
         new_user = User(facebook_id=facebook_id, name=profile['name'], email=profile['email'])
         db.session.add(new_user)
         db.session.commit()
-        user = User.query.filter_by(facebook_id=facebook_id).first()
+    user = User.query.filter_by(facebook_id=facebook_id).first()
     session['current_user'] = user.user_id
+    session['access_token'] = access_token
     return 
 
 def commit_note_to_db(user_id, note_title, new_note):

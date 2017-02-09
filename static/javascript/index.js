@@ -1,8 +1,6 @@
 ///// for access to environmental variable /////
 var app_id
 
-
-
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -21,8 +19,21 @@ function statusChangeCallback(response) {
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
+      
+      FB.getLoginStatus(function(response) {
+        $.ajax({
+            url: '/log_out',
+            type: 'DELETE',
+            success: sign_out
+        });
+            console.log("In getLoginStatus");
+
+        });
+
       document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+        'into Facebook.'
+
+
     }
 }
 
@@ -64,21 +75,6 @@ FB.init({
 // The below punctution is needed to contain something to avoid Syntax error
 };
 
-// // Load the SDK asynchronously
-
-function facebookLogin(){
-    app_id = $(this).val();
-    console.log(app_id);
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-}
-
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
 function postRequest(){
@@ -93,8 +89,8 @@ function testAPI(response) {
     var accessToken = response['authResponse']['accessToken'];
     console.log('THIS IS THE ACCESS TOKEN');
     console.log(accessToken);
-    var data = {'accessToken': accessToken}
-    $.get("/notes", data, postRequest);
+    var data = {"accessToken": accessToken}
+    $.get("/log_in", data, postRequest);
     console.log("After POST Request");
 
 
@@ -282,37 +278,18 @@ function removeNoteFromDB(event){
 }
 
 /// Sign-Out with Facebook //////
-function signed_out(){
+function sign_out(){
     console.log("signed_out running")
 }
 
-function fbLogoutUser(){
-    FB.getLoginStatus(function(response) {
-                console.log("In getLoginStatus");
-                console.log(response);
-                if (response && response.status === 'connected') {
-                    console.log("connected");
-                    FB.logout(function(response) {
-                        // user is now logged out
-                        console.log("logout function");
-                        $.ajax({
-                            url: '/log_out',
-                            type: 'DELETE',
-                            success: signed_out
-                        });
-                    });
-                }
-    });
-}
+
 
 ////// when ready execute code //////
 
 $(document).ready(function(){
-    $('body').on('click', '#log_in_button', facebookLogin);
     $('body').on('click', '#new_note_button', addNewNoteToDB);
     $('body').on('change', '#ascend_descend', ascendDescend);
     $('body').on('click', '.edit_button', editExhistingNote);
     $('body').on('click', '.save_edits', updateDBwithEditedNote);
     $('body').on('click', '.delete_note', removeNoteFromDB);
-    $('body').on('click', '#fblogout', fbLogoutUser);
 });
