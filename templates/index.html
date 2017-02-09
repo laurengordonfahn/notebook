@@ -11,8 +11,7 @@
     </h2>
         
         <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="medium" data-auto-logout-link='true' scope="email" data-show-faces="false" data-auto-logout-link="true"  onlogin="checkLoginState"></div>
-          <!-- https://gist.github.com/heldrida/6232556 -->
-         <!--  http://stackoverflow.com/questions/5680048/logout-button-in-facebook-sdk -->
+          
     {% if not 'current_user' in session %}
          <div class='notebook_border'><p> The written word is a wish that can be shared</p><p> A note is a dream at it's begining </p></div>
     {% endif %}
