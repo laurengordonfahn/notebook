@@ -35,22 +35,21 @@ users_schema = UserSchema(many=True)
 @app.route('/')
 def index():
     """Render index.html for sigin-in """
+
     if not current_user():
         
         return render_template("index.html", app_id=facebook_app_id())
     
     if current_user():
-        print "/ is running"
 
         notes = gather_all_notes_from_db(current_user().user_id)
-        print notes
+        
         return render_template("index.html", app_id=facebook_app_id(), notes=notes)
 
 
 @app.route('/log_in')
 def login():
     """ Creates User Session and New Account if needed """
-
 
     access_token = request.args.get("accessToken")
 
@@ -67,8 +66,7 @@ def add_note():
     new_note = request.form.get("new_note")
 
     note = commit_note_to_db(current_user().user_id, note_title, new_note) 
-    print note , "NOTE NOTE NOTE NOTE NOTE SEVER "
-
+    
     return jsonify(format_note(note))
 
 @app.route('/notes/edit/<id>', methods=['PUT'])
@@ -111,8 +109,9 @@ def delete_note(id):
 @app.route('/log_out', methods=['DELETE'])
 def log_out():
     """ Delete 'current_user' from session and redirect homepage """
+    
     del session['current_user']
-    print current_user(), "CURRENT USER SHOULD BE NONE"
+    
     return jsonify({'none': 'none'})
 
 
