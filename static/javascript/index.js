@@ -91,6 +91,7 @@ function updateNotes(response){
 
     var content = Mustache.render(tmpl, response);
 
+    $(".add_new_note").html("");
     $(".add_new_note").prepend(content);
 }
 

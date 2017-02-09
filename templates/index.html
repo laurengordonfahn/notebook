@@ -49,22 +49,18 @@
         <h3>Your Notebook Log:</h3>
         <div class="notebook_border">
 
-            {% if not notes %}
+            <form>
+                <select id='ascend_descend' name='order_by'>
+                    <option value='most_recent'> Order-By Most Recent </option>
+                    <option value='oldest'> Order-By Oldest </option>
+                </select>
+            </form>
 
-                <p> You Don't have Any Notes Saved At This Time. </p>
+            <div id="contain_all_notes">
 
-            {% else %}
-
-                <form>
-                    <select id='ascend_descend' name='order_by'>
-                        <option value='most_recent'> Order-By Most Recent </option>
-                        <option value='oldest'> Order-By Oldest </option>
-                    </select>
-                </form>
-
-                <div id="contain_all_notes">
-                <div class="add_new_note"> </div>
-
+            <div class="add_new_note"> <p>You do not have any notes saved at this time. </p> </div>
+            
+            {% if notes %}
                 {% for note in notes %}
                     
                     <div class="decorate_note_div">
@@ -91,7 +87,7 @@
                 {% endfor %}
 
                 </div>
-                
+
             {% endif %}
 
     {% endif %}
