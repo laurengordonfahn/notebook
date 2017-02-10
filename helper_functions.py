@@ -31,13 +31,12 @@ def facebook_app_id():
 def gather_all_notes_from_db(user_id):
     """Gather all notes by user id """
     
-    note = Note.query.filter_by(user_id=user_id).order_by(desc(Note.created_at)).all()
+    notes = Note.query.filter_by(user_id=user_id).order_by(desc(Note.id)).all()
 
-    if not note:
-
-        return None
-
-    return note
+    if notes:
+        
+        return notes
+        
 
 ##### 'POST /notes' helper functions #####
 def load_user(access_token):

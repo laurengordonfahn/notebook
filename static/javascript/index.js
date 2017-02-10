@@ -146,7 +146,7 @@ function updateNoteOrder(response){
       "</div>" +
     "{{/items}}";
 
-    var content = Mustache.render(template,data);
+    var content = Mustache.render(template, data);
 
     $('#contain_all_notes').append(content);
     

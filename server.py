@@ -102,7 +102,7 @@ def descend_order():
     if order_by == "most_recent":
 
         notes = gather_all_notes_from_db(current_user().id) 
-        
+
     else:
 
         notes =  Note.query.order_by(asc(Note.created_at)).all()
