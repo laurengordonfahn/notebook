@@ -62,12 +62,6 @@ function onFBLogin(response) {
     var data = {"accessToken": accessToken}
 
     $.get("/session", data, postRequest);
-   
-    FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
 }
 
  //// Update the DOM with new note /////
