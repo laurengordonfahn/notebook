@@ -34,7 +34,7 @@ def gather_all_notes_from_db(user_id):
     notes = Note.query.filter_by(user_id=user_id).order_by(desc(Note.id)).all()
 
     if notes:
-        
+
         return notes
         
 
@@ -53,8 +53,8 @@ def load_user(access_token):
 
     if not user:
 
-        new_user = User(facebook_id=facebook_id, name=profile['name'], email=profile['email'])
-        db.session.add(new_user)
+        user = User(facebook_id=facebook_id, name=profile['name'], email=profile['email'])
+        db.session.add(user)
         db.session.commit()
 
     session['current_user'] = user.id
