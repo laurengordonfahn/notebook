@@ -33,7 +33,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '{app_id}',
+        appId      : 'app_id',
         cookie     : true,                 
         xfbml      : true,  
         version    : 'v2.8' 
