@@ -87,7 +87,7 @@ function updateNotes(response){
 
     var content = Mustache.render(tmpl, response);
 
-    $(".add_new_note").html("");
+    $("p.Barrio").remove();
     $(".add_new_note").prepend(content);
 }
 

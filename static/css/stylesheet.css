@@ -1,24 +1,27 @@
-#new_note_text_box{
-    height: 100px;
-    width: 98%;
+body{
+    font-family: 'Lato', sans-serif;
+} 
+
+.Barrio{
+    font-family: 'Barrio', cursive;
 }
 
 .notebook_border{
     border: double 10px;
     border-color: gray;
-    padding: 10px;
-    margin: 10px;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 15px 10px 10px;
 
 }
 
 .decorate_note_div{
     display: block;
-    border : solid 2px;
+    border: solid 2px;
     border-color: gray;
+    border-radius: 5px;
     padding: 10px;
     margin: 10px 5px 10px 5px; 
-
-
 }
 
 button.delete_note{
@@ -26,4 +29,69 @@ button.delete_note{
     float: right;
     margin: -1px -2px -2px;
     
+}
+
+select button {
+    font-family: 'Lato', sans-serif;
+}
+
+input{
+    border-radius: 5px;
+}
+
+#header{
+    display: block;
+}
+
+h2.Barrio{
+    display: inline-block;
+
+}
+
+#log_in_button{
+    display: block;
+    float: right;
+    top: 20px;
+}
+
+#new_note_text_box{
+    height: 100px;
+    width: 100%;
+}
+
+#note_header{
+    display: block;
+    float: right;
+    margin: 0px;
+}
+
+#select{
+    display: inline-block;
+}
+
+#note_title_header{
+    display: inline-block;
+}
+
+#note_title{
+    display: inline-block;
+    margin: 5px;  
+}
+#note_created_at{
+    display:inline-block;
+    float:right;
+}
+
+#note{
+    display: inline-block;
+}
+
+#note_content{
+    display: inline-block;
+    margin: 5px;
+    
+}
+
+button {
+    font-family: 'Lato', sans-serif;
 }

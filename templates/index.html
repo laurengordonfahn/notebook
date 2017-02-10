@@ -3,63 +3,66 @@
 <head>
     <title>Notebook</title>
     <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Lato" rel="stylesheet">
 
 </head>
 <body>
-    <h2>Make Notes Simply! <br>
-        Simply Make Notes!
-    </h2>
+    <div id="header">
+        <h2 class="Barrio">Make Notes Simply! Simply Make Notes!
+        </h2>
         
         <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="medium" data-auto-logout-link='true' scope="email" data-show-faces="false" data-auto-logout-link="true"  onlogin="checkLoginState"></div>
+    </div>
           
     {% if not 'current_user' in session %}
-         <div class='notebook_border'><p> The written word is a wish that can be shared</p><p> A note is a dream at it's begining </p></div>
+         <div class='notebook_border'><p class="Barrio"> The written word is a wish that can be shared <br> A note is a dream at it's begining </p></div>
     {% endif %}
 
     {% if 'current_user' in session %} 
 
-        <form action="/notes" method="post">
-            <p>Lable Your Note:</p><input id="title_for_new_note" type="text" placeholder="Note Title" name="note_title">
+        <form id="new_note_form" action="/notes" method="post">
+            <p"new_note_title">Create A Note:</p><input id="title_for_new_note" type="text" placeholder="Note Title" name="note_title">
             <br>
-            <p>Create Your Note:</p><input id="new_note_text_box" type="text" placeholder="Note" name="new_note">
+            <br>
+            <input id="new_note_text_box" type="text" placeholder="Note" name="new_note">
             <br>
             <br>
             <button id="new_note_button">Submit</button>
         </form>
 
 
-        <h3>Your Notebook Log:</h3>
         <div class="notebook_border">
 
-            <form>
+            <form id="select">
                 <select id='ascend_descend' name='order_by'>
                     <option value='most_recent'> Order-By Most Recent </option>
                     <option value='oldest'> Order-By Oldest </option>
                 </select>
             </form>
+            <h2 class="Barrio" id="note_header">Your Notebook Log:</h3>
 
             <div id="contain_all_notes">
 
-            <div class="add_new_note"> <p>You do not have any notes saved at this time. </p> </div>
+            <div class="add_new_note"> </div>
 
             {% if notes %}
                 {% for note in notes %}
                     
                     <div class="decorate_note_div">
                         
-                        <div>
+                        <div id="note_created_at">
                             {{ note.created_at }} 
                         </div>
 
                         <div> 
-                            <h4>Note Title:</h4> <div class="editable_{{ note.id }}" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
+                            <h3 id="note_title_header">Note Title:</h3><div id="note_title" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
                         </div>
 
                         <div >
-                            <h4>Note:</h4> 
-                            <div class="editable_{{ note.id }}" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
+                            <h3 id="note">Note:</h3> 
+                            <div id="note_content" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
                         </div>
-                    
+                        <br>
             
                         <button class="edit_button" value="{{ note.id }}"> Edit Note </button>
                         <button class="delete_note" value="{{ note.id }}"> Delete </button>
