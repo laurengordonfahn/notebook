@@ -69,24 +69,24 @@ h2.Barrio{
     display: inline-block;
 }
 
-#note_title_header{
+.note_title_header{
     display: inline-block;
 }
 
-#note_title{
+.note_title{
     display: inline-block;
     margin: 5px;  
 }
-#note_created_at{
+.note_created_at{
     display:inline-block;
     float:right;
 }
 
-#note{
+.note{
     display: inline-block;
 }
 
-#note_content{
+.note_content{
     display: inline-block;
     margin: 5px;
     

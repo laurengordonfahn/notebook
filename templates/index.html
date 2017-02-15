@@ -50,17 +50,17 @@
                     
                     <div class="decorate_note_div">
                         
-                        <div id="note_created_at">
+                        <div class="note_created_at">
                             {{ note.created_at }} 
                         </div>
 
                         <div> 
-                            <h3 id="note_title_header">Note Title:</h3><div id="note_title" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
+                            <h3 class="note_title_header" >Note Title:</h3><div class="note_title" id ="note_title_{{ note.id }}" contenteditable="false">{{ note.title }}</div>
                         </div>
 
                         <div >
-                            <h3 id="note">Note:</h3> 
-                            <div id="note_content" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
+                            <h3 class="note">Note:</h3> 
+                            <div class="note_content" id="notes_from_db_{{ note.id }}" contenteditable="false"> {{ note.content }} </div>
                         </div>
                         <br>
             

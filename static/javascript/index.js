@@ -30,7 +30,6 @@ function checkLoginState() {
     });
 }
 
-
 window.fbAsyncInit = function() {
     FB.init({
         appId      : 'app_id',
@@ -56,6 +55,7 @@ function postRequest(){
                 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+
 function onFBLogin(response) {
 
     var accessToken = response['authResponse']['accessToken'];
@@ -71,14 +71,14 @@ function updateNotes(response){
 
     var tmpl =
                 "<div class=\"decorate_note_div\">" +
-                "<div>{{created_at}}</div>" +
+                "<div class=\"note_created_at\"> {{created_at}} </div>" +
                 "<div>" +
-                    "<h4>Note Title:</h4>" +
-                    "<p id=\"note_title_{{id}}\">{{title}}</p>" +
+                    "<h3 class=\"note_title_header\" >Note Title:</h3>" +
+                    "<div class=\"note_title\" id=\"note_title_{{id}}\" contenteditable=\"false\"> {{title}} </div>" +
                 "</div>" +
                  "<div>" +
-                    "<h4>Note:</h4>" + 
-                    "<p id=\"notes_from_db_{{id}}\">{{content}}</p>"+
+                    "<h3 class=\"note\" >Note:</h3>" + 
+                    "<div class=\"note_content\" id=\"notes_from_db_{{id}}\" contenteditable=\"false\">{{content}}</div>"+
                 "</div>" +
                 "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
                 "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
@@ -125,14 +125,14 @@ function updateNoteOrder(response){
     var template = ""+
     "{{#items}}" +
       "<div class=\"decorate_note_div\">"+
-        "<div>{{created_at}}</div>" +
+        "<div class=\"note_created_at\">{{created_at}}</div>" +
         "<div>" +
-          "<h4>Note Title:</h4>" +
-          "<p id=\"note_title_{{id}}\">{{title}}</p>" +
+          "<h3 class=\"note_title_header\">Note Title:</h3>" +
+          "<div class=\"note_title\" id=\"note_title_{{id}}\" contenteditable=\"false\">{{title}}</div>" +
         "</div>" +
         "<div>" +
-            "<h4>Note:</h4>" + 
-            "<p id=\"notes_from_db_{{id}}\">{{content}}</p>"+
+            "<h3 class=\"note\">Note:</h3>" + 
+            "<div class=\"note_content\" id=\"notes_from_db_{{id}}\" contenteditable=\"false\">{{content}}</div>"+
         "</div>" +
         "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
         "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
