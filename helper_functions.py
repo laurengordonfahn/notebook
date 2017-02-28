@@ -108,11 +108,14 @@ def delete_note_from_db(user_id, note_id):
 ##### Used in many routes #######
 def format_note(note):
 
+    date_format = str(note.created_at).split(" ")[0];
+    print date_format, "DATE FORMATE"
+    
     return {
         "content": note.content ,
         "title": note.title,
         "id": note.id, 
-        "created_at": note.created_at 
+        "created_at": date_format 
     }
 
 

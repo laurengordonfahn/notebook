@@ -214,8 +214,7 @@ function updateDBwithEditedNote(event){
         success: editAndUpDateNotes
     });
 
-}
-    
+} 
 
 ///// Remove note from list of notes //////
 function removeNote(response){
