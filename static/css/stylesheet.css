@@ -1,20 +1,67 @@
+/* General font and coloring */
 body{
     font-family: 'Lato', sans-serif;
+    padding: 2%;
 } 
 
-.Barrio{
-    font-family: 'Barrio', cursive;
+/* App Inputs */
+input{
+    border-radius: 5px;
 }
 
+/* App Buttons */
+button {
+    font-family: "Lucida Grande" "Lucida Sans Unicode";
+    letter-spacing: 1px;
+    background-color: #296395;
+    padding: 5px 8px 5px 8px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* App border */
 .notebook_border{
+    background-color: white;
     border: double 10px;
     border-color: gray;
     border-radius: 5px;
     padding: 15px;
     margin: 10px 15px 10px 10px;
-
 }
 
+#div_landing_page_text{
+    border: double 10px;
+    border-color: gray;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5%;
+}
+
+/* App Header */
+#header{
+    display: block;
+}
+.fb-login-button{
+    display: block;
+    float: right;
+    top: 20px;
+    margin-right:5%;
+}
+
+/* App header fonts */
+.head_font{
+    font-family: 'Amiko', sans-serif;
+}
+
+h4.head_font{
+    padding: 50px;
+}
+
+/* Individual note border */
 .decorate_note_div{
     display: block;
     border: solid 2px;
@@ -23,6 +70,8 @@ body{
     padding: 10px;
     margin: 10px 5px 10px 5px; 
 }
+/* Indivdual Note Alerations */
+/* Move Delete Button to Right Corner */
 
 button.delete_note{
     display: block;
@@ -31,42 +80,37 @@ button.delete_note{
     
 }
 
-select button {
-    font-family: 'Lato', sans-serif;
-}
-
-input{
-    border-radius: 5px;
-}
-
-#header{
-    display: block;
-}
-
-h2.Barrio{
+h2.head_font{
     display: inline-block;
-
 }
 
-#log_in_button{
-    display: block;
-    float: right;
-    top: 20px;
-}
 
 #new_note_text_box{
     height: 100px;
-    width: 100%;
+    width: 96%;
+    margin: 5px 5px 2px 5px;
+}
+
+#div_select_header{
+    margin-top: 5%;
+    margin-bottom: 0px;
 }
 
 #note_header{
     display: block;
     float: right;
-    margin: 0px;
+    position: relative;
+    bottom: 20px;
+    margin-bottom:0px;
 }
 
 #select{
     display: inline-block;
+}
+
+.decorate_note_div{
+    display: block;
+    margin-top:3%;
 }
 
 .note_title_header{
@@ -92,6 +136,42 @@ h2.Barrio{
     
 }
 
-button {
-    font-family: 'Lato', sans-serif;
+
+@media screen and (max-width: 520px) {
+    #div_select_header{
+        margin-bottom: 0px;
+        padding: 0px;
+        
+    }
+
+    #note_header{
+        padding-right:25%;
+        margin-bottom:0px;
+    }
+
+    #select{
+        margin-top: 0px;
+    }    
+    
+}
+
+@media screen and (max-width: 460px) {
+
+    .fb-login-button{
+    display: block;
+    float: right;
+    top: 20px;
+    margin-bottom: 10%;
+    }
+
+    #note_header{
+        display: block;
+        float: right;
+    } 
+
+    #select{
+        display: inline-block;
+        margin-left:2%;
+    }
+
 }

@@ -1,5 +1,5 @@
 ///// for access to environmental variable /////
-var app_id
+var app_id = $(".fb-login-button").attr('value');
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -87,7 +87,7 @@ function updateNotes(response){
 
     var content = Mustache.render(tmpl, response);
 
-    $("p.Barrio").remove();
+    $("p.head_font").remove();
     $(".add_new_note").prepend(content);
 }
 
