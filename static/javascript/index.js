@@ -195,11 +195,12 @@ function updateDBwithEditedNote(event){
     event.preventDefault();
 
     var note_id = $(this).val();
-    var title_id = "#note_title_"+ note_id;
+    var title_id = "note_title_"+ note_id;
     var note_content_id = "#notes_from_db_" + note_id;
-    var note_title = $(title_id).html();
+    // var note_title = $(title_id).html();
     var note_content = $(note_content_id).html();
-
+    var note_title = document.getElementById(title_id).innerText;
+    console.log(note_title);
 
     // Check if button has class 'save_edits' then toggle back to 'edit_note'
     if ($(this).hasClass('save_edits')){
