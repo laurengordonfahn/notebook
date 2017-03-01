@@ -13,7 +13,7 @@ input{
 button {
     font-family: "Lucida Grande" "Lucida Sans Unicode";
     letter-spacing: 1px;
-    background-color: #296395;
+    background-color: #4764b3;
     padding: 5px 8px 5px 8px;
     border: none;
     border-radius: 2px;
@@ -123,7 +123,7 @@ h2.head_font{
 }
 .note_created_at{
     display:inline-block;
-    float:right;
+    float: right;
 }
 
 .note{
@@ -136,6 +136,22 @@ h2.head_font{
     
 }
 
+.add_new_note{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.highlight{
+    /*https://css-tricks.com/snippets/css/glowing-blue-input-highlights/
+   */
+    width: 100%;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 2px solid rgba(126, 195, 216, 1);
+    border-radius: 3px;
+    
+}
 
 @media screen and (max-width: 520px) {
     #div_select_header{
@@ -153,6 +169,10 @@ h2.head_font{
         margin-top: 0px;
     }    
     
+    .note_created_at{
+    display:inline-block;
+    float: right;
+}
 }
 
 @media screen and (max-width: 460px) {

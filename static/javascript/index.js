@@ -171,13 +171,14 @@ function editExhistingNote(event){
 
     $(note_title).attr("contenteditable", "true");
     $(notes_from_db).attr("contenteditable", "true");
+    $(note_title).attr("class", "highlight");
+    $(notes_from_db).attr("class", "highlight");
 
     // Check if button has class 'edit_button' then toggle back to 'save_edits'
     if ($(this).hasClass('edit_button')){
         $(this).html('Save Edits').toggleClass('edit_button save_edits');
     }
     
-
 }
 
 ////// Update DB with Edited Notes Content ////
@@ -202,6 +203,11 @@ function updateDBwithEditedNote(event){
         $(this).html('Edit Note').toggleClass('save_edits edit_button');
         $(title_id).attr("contenteditable", "false");
         $(note_content_id).attr("contenteditable", "false");
+        $(title_id).toggleClass('highlight unhighlight');
+        $(note_content_id).toggleClass('highlight unhighlight');
+        
+        
+
     }
 
     $.ajax({

@@ -31,7 +31,15 @@ def facebook_app_id():
 def gather_all_notes_from_db(user_id):
     """Gather all notes by user id """
     
-    return Note.query.filter_by(user_id=user_id).order_by(desc(Note.id)).all()
+    notes = Note.query.filter_by(user_id=user_id).order_by(desc(Note.id)).all()
+    notes_array = []
+
+    for note in notes:
+        note  = format_note(note)
+        notes_array.append(note)
+
+    return notes_array
+
 
 ##### 'POST /notes' helper functions #####
 def load_user(access_token):
@@ -109,8 +117,7 @@ def delete_note_from_db(user_id, note_id):
 def format_note(note):
 
     date_format = str(note.created_at).split(" ")[0];
-    print date_format, "DATE FORMATE"
-    
+
     return {
         "content": note.content ,
         "title": note.title,
