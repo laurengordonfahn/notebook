@@ -170,7 +170,9 @@ function editExhistingNote(event){
     var notes_from_db = '#notes_from_db_' + note_id;
 
     $(note_title).attr("contenteditable", "true");
+    $(note_title).attr("style","white-space: pre-wrap");
     $(notes_from_db).attr("contenteditable", "true");
+    $(notes_from_db).attr("style","white-space: pre-wrap");
     $(note_title).attr("class", "highlight");
     $(notes_from_db).attr("class", "highlight");
 
@@ -198,15 +200,14 @@ function updateDBwithEditedNote(event){
     var note_title = $(title_id).html();
     var note_content = $(note_content_id).html();
 
+
     // Check if button has class 'save_edits' then toggle back to 'edit_note'
     if ($(this).hasClass('save_edits')){
         $(this).html('Edit Note').toggleClass('save_edits edit_button');
         $(title_id).attr("contenteditable", "false");
         $(note_content_id).attr("contenteditable", "false");
         $(title_id).toggleClass('highlight unhighlight');
-        $(note_content_id).toggleClass('highlight unhighlight');
-        
-        
+        $(note_content_id).toggleClass('highlight unhighlight'); 
 
     }
 
