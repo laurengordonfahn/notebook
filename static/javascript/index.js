@@ -75,12 +75,14 @@ function updateNotes(response){
                 "<div class=\"div_note_title\">" +
                     "<h3 class=\"header_note_title\" >Note Title:</h3>" +
                     "<div class=\"note_title\" id=\"note_title_{{id}}\"" +
-                    "style=\"white-space: pre-line\" contenteditable=\"false\"> {{title}} </div>" +
+                    "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
+                    "contenteditable=\"false\"> {{title}} </div>" +
                 "</div>" +
                  "<div class=\"div_note_content\">" +
                     "<h3 class=\"note\" >Note:</h3>" + 
                     "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" + 
-                    "style=\"white-space: pre-line\" contenteditable=\"false\">{{content}}</div>"+
+                    "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
+                    "contenteditable=\"false\">{{content}}</div>"+
                 "</div>" +
                 "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
                 "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
@@ -131,12 +133,14 @@ function updateNoteOrder(response){
         "<div class=\"div_note_title\">" +
           "<h3 class=\"header_note_title\">Note Title:</h3>" +
           "<div class=\"note_title\" id=\"note_title_{{id}}\"" + 
-          "style=\"white-space: pre-line\" contenteditable=\"false\">{{title}}</div>" +
+          "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
+          "contenteditable=\"false\">{{title}}</div>" +
         "</div>" +
         "<div class=\"div_note_content\">" +
             "<h3 class=\"note\">Note:</h3>" + 
             "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" +
-            "style=\"white-space: pre-line\"contenteditable=\"false\">{{content}}</div>"+
+            "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
+            "contenteditable=\"false\">{{content}}</div>"+
         "</div>" +
         "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
         "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
@@ -173,10 +177,15 @@ function editExhistingNote(event){
     var note_title = '#note_title_' + note_id;
     var notes_from_db = '#notes_from_db_' + note_id;
 
+    // style="white-space: pre-line; width: 100%; word-wrap:break-word"
     $(note_title).attr("contenteditable", "true");
     $(note_title).attr("style","white-space: pre-line");
+    $(note_title).attr("style","width: 100%");
+    $(note_title).attr("style","word-wrap: break-word");
     $(notes_from_db).attr("contenteditable", "true");
     $(notes_from_db).attr("style","white-space: pre-line");
+    $(notes_from_db).attr("style","width: 100%");
+    $(notes_from_db).attr("style","word-wrap: break-word");
     $(note_title).attr("class", "highlight");
     $(notes_from_db).attr("class", "highlight");
 

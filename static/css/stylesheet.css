@@ -116,20 +116,25 @@ h2.head_font{
     clear: both;
     margin: 0px;
     padding-bottom: 0px;
+    position: relative;
+    /*display: flex;*/
 }
 
 .header_note_title{
     display: inline-block;
-    float: left;
     margin-top: 0px;
     padding-top: 3px;
-    text-align: left;
+    display: flex;
 }
 
 .note_title{
     display: inline-block;
-    padding: 5px;;
-    float: left;
+    padding: 5px;
+    /*position: absolute;*/
+    /*float: left;*/
+    /*clear: both;*/
+    margin: 0px;
+    display: flex;
 }
 
 .note_created_at{
