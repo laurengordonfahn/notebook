@@ -121,7 +121,7 @@ function addNewNoteToDB(event){
 function updateNoteOrder(response){
     
     $("#contain_all_notes").empty();
-
+    
     var data = {
         items: response
     };
@@ -148,10 +148,10 @@ function updateNoteOrder(response){
       "</div>" +
     "{{/items}}";
 
+
     var content = Mustache.render(template, data);
 
     $('#contain_all_notes').append(content);
-    
 }
 
 

@@ -74,7 +74,7 @@ def add_note():
     return jsonify(format_note(note))
 
 @app.route('/notes/edit/<id>', methods=['PUT'])
-def update_edited_note_in_BD(id):
+def update_edited_note_in_db(id):
     """ Replace Note in Database by ID with Edited Note and Title """
     
     note_title = request.form.get('title')

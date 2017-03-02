@@ -36,10 +36,10 @@
     <div id="div_new_note_form">
                     
         <form id="new_note_form" action="/notes" method="post">
-            <p"new_note_title">Create A Note:</p><input id="title_for_new_note" type="text"  rows="1" cols="20" wrap="hard" placeholder="Note Title" name="note_title">
+            <p"new_note_title">Create A Note:</p><textarea wrap="hard" rows="2" cols=" 20" id="title_for_new_note" type="text" placeholder="Note Title" name="note_title"></textarea>
             <br>
             <br>
-            <input id="new_note_text_box" type="text" rows="5" cols="100" wrap="hard" placeholder="Note" name="new_note">
+            <textarea id="new_note_text_box" type="text" rows="5" cols="100" wrap="hard" placeholder="Note" name="new_note"></textarea>
             <br>
             <br>
             <button id="new_note_button">Submit</button>
@@ -68,7 +68,7 @@
         {% if notes %}
             
             {% for note in notes %}
-                        
+        
                 <div class="decorate_note_div">
                         
                     <div class="note_created_at">
@@ -101,7 +101,10 @@
                 </div>
                     
             {% endfor %}
-
+            {% else %}
+                <div class="decorate_note_div no_notes">
+                    <p> You do not have any notes. </p>
+                </div>
             
         {% endif %}
 
