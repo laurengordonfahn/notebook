@@ -10,7 +10,7 @@ function statusChangeCallback(response) {
       
       onFBLogin(response);
     } else if (response.status === 'not_authorized') {
-      
+    
     } else {
       
         FB.getLoginStatus(function(response) {
@@ -72,13 +72,15 @@ function updateNotes(response){
     var tmpl =
                 "<div class=\"decorate_note_div\">" +
                 "<div class=\"note_created_at\"> {{created_at}} </div>" +
-                "<div>" +
-                    "<h3 class=\"note_title_header\" >Note Title:</h3>" +
-                    "<div class=\"note_title\" id=\"note_title_{{id}}\" contenteditable=\"false\"> {{title}} </div>" +
+                "<div class=\"div_note_title\">" +
+                    "<h3 class=\"header_note_title\" >Note Title:</h3>" +
+                    "<div class=\"note_title\" id=\"note_title_{{id}}\"" +
+                    "style=\"white-space: pre-line\" contenteditable=\"false\"> {{title}} </div>" +
                 "</div>" +
-                 "<div>" +
+                 "<div class=\"div_note_content\">" +
                     "<h3 class=\"note\" >Note:</h3>" + 
-                    "<div class=\"note_content\" id=\"notes_from_db_{{id}}\" contenteditable=\"false\">{{content}}</div>"+
+                    "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" + 
+                    "style=\"white-space: pre-line\" contenteditable=\"false\">{{content}}</div>"+
                 "</div>" +
                 "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
                 "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
@@ -126,13 +128,15 @@ function updateNoteOrder(response){
     "{{#items}}" +
       "<div class=\"decorate_note_div\">"+
         "<div class=\"note_created_at\">{{created_at}}</div>" +
-        "<div>" +
-          "<h3 class=\"note_title_header\">Note Title:</h3>" +
-          "<div class=\"note_title\" id=\"note_title_{{id}}\" contenteditable=\"false\">{{title}}</div>" +
+        "<div class=\"div_note_title\">" +
+          "<h3 class=\"header_note_title\">Note Title:</h3>" +
+          "<div class=\"note_title\" id=\"note_title_{{id}}\"" + 
+          "style=\"white-space: pre-line\" contenteditable=\"false\">{{title}}</div>" +
         "</div>" +
-        "<div>" +
+        "<div class=\"div_note_content\">" +
             "<h3 class=\"note\">Note:</h3>" + 
-            "<div class=\"note_content\" id=\"notes_from_db_{{id}}\" contenteditable=\"false\">{{content}}</div>"+
+            "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" +
+            "style=\"white-space: pre-line\"contenteditable=\"false\">{{content}}</div>"+
         "</div>" +
         "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
         "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
@@ -170,9 +174,9 @@ function editExhistingNote(event){
     var notes_from_db = '#notes_from_db_' + note_id;
 
     $(note_title).attr("contenteditable", "true");
-    $(note_title).attr("style","white-space: pre-wrap");
+    $(note_title).attr("style","white-space: pre-line");
     $(notes_from_db).attr("contenteditable", "true");
-    $(notes_from_db).attr("style","white-space: pre-wrap");
+    $(notes_from_db).attr("style","white-space: pre-line");
     $(note_title).attr("class", "highlight");
     $(notes_from_db).attr("class", "highlight");
 
@@ -195,20 +199,22 @@ function updateDBwithEditedNote(event){
     event.preventDefault();
 
     var note_id = $(this).val();
+    // TODO: Had to remove # from line below to make edit work in process
     var title_id = "note_title_"+ note_id;
-    var note_content_id = "#notes_from_db_" + note_id;
+    var note_content_id = "notes_from_db_" + note_id;
     // var note_title = $(title_id).html();
-    var note_content = $(note_content_id).html();
+    // var note_content = $(note_content_id).html();
+    var note_content = document.getElementById(note_content_id).innerText;
     var note_title = document.getElementById(title_id).innerText;
-    console.log(note_title);
+    console.log(note_title, note_content);
 
     // Check if button has class 'save_edits' then toggle back to 'edit_note'
     if ($(this).hasClass('save_edits')){
         $(this).html('Edit Note').toggleClass('save_edits edit_button');
-        $(title_id).attr("contenteditable", "false");
-        $(note_content_id).attr("contenteditable", "false");
-        $(title_id).toggleClass('highlight unhighlight');
-        $(note_content_id).toggleClass('highlight unhighlight'); 
+        $("#" + title_id).attr("contenteditable", "false");
+        $("#" + note_content_id).attr("contenteditable", "false");
+        $("#" + title_id).toggleClass('highlight unhighlight');
+        $("#" + note_content_id).toggleClass('highlight unhighlight'); 
 
     }
 
