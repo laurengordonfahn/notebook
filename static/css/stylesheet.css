@@ -58,10 +58,13 @@ button {
     font-family: 'Amiko', sans-serif;
 }
 
-h4.head_font{
+h3.head_font{
     padding: 50px;
 }
 
+#title_for_new_note {
+    width: 40%;
+}
 /* Individual note border */
 .decorate_note_div{
     display: block;
@@ -157,7 +160,7 @@ h2.head_font{
 
 .note_content{
     display: inline-block;
-    margin: 5px;
+
 }
 
 .add_new_note{
@@ -192,8 +195,7 @@ h2.head_font{
 @media screen and (max-width: 520px) {
     #div_select_header{
         margin-bottom: 0px;
-        padding: 0px;
-        
+        padding: 0px; 
     }
 
     #note_header{
@@ -208,6 +210,18 @@ h2.head_font{
     .note_created_at{
     display:inline-block;
     float: right;
+    }
+
+    .no_notes{
+    height: 100px;
+    width: 85%;
+    margin: 5px 5px 2px 5px;
+    border: solid 2px;
+    border-color: gray;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    z-index: -10;
 }
 }
 

@@ -6,9 +6,28 @@ function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     
-    if (response.status === 'connected') {
+    var app_session_class = document.getElementsByClassName("fb-login-button");
+    var app_status = $(app_session_class).attr("app-session");
+    
+    console.log(app_status);
+
+    if (status === 'no' && response.status === 'connected') {
+
+        FB.getLoginStatus(function(response) {
+            $.ajax({
+                url: '/session',
+                type: 'DELETE',
+                success: afterSignOut
+            });
+            console.log("In getLoginStatus");
+        });
+
+    }
+
+    else if (response.status === 'connected') {
       
       onFBLogin(response);
+
     } else if (response.status === 'not_authorized') {
     
     } else {

@@ -38,11 +38,11 @@ def index():
 
     if not current_user():
         
-        return render_template("index.html", app_id=facebook_app_id())
+        return render_template("index.html", app_id=facebook_app_id(), user="no")
     
     notes = gather_all_notes_from_db(current_user().id)
         
-    return render_template("index.html", app_id=facebook_app_id(), notes=notes)
+    return render_template("index.html", app_id=facebook_app_id(), user="yes", notes=notes)
 
 
 @app.route('/session')
