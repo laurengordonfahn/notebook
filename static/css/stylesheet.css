@@ -7,7 +7,7 @@ body{
 /* App Inputs */
 input, textarea {
     border-radius: 5px;
-    border-color: gray 1px;
+    border: solid 2px gray;
 }
 
 /* App Buttons */

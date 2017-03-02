@@ -119,39 +119,44 @@ function addNewNoteToDB(event){
 //// Reorganize Notes In Ascending/Descending Oder ////
 
 function updateNoteOrder(response){
-    
-    $("#contain_all_notes").empty();
-    
-    var data = {
-        items: response
-    };
+    if (response.length !== 0){
+        console.log(response.length, "if is running");
+        $("#contain_all_notes").empty();
+        
+        var data = {
+            items: response
+        };
 
-    var template = ""+
-    "{{#items}}" +
-      "<div class=\"decorate_note_div\">"+
-        "<div class=\"note_created_at\">{{created_at}}</div>" +
-        "<div class=\"div_note_title\">" +
-          "<h3 class=\"header_note_title\">Note Title:</h3>" +
-          "<div class=\"note_title\" id=\"note_title_{{id}}\"" + 
-          "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
-          "contenteditable=\"false\">{{title}}</div>" +
-        "</div>" +
-        "<div class=\"div_note_content\">" +
-            "<h3 class=\"note\">Note:</h3>" + 
-            "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" +
-            "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
-            "contenteditable=\"false\">{{content}}</div>"+
-        "</div>" +
-        "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
-        "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
-        "<br>" +
-      "</div>" +
-    "{{/items}}";
+        var template = ""+
+        "{{#items}}" +
+          "<div class=\"decorate_note_div\">"+
+            "<div class=\"note_created_at\">{{created_at}}</div>" +
+            "<div class=\"div_note_title\">" +
+              "<h3 class=\"header_note_title\">Note Title:</h3>" +
+              "<div class=\"note_title\" id=\"note_title_{{id}}\"" + 
+              "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
+              "contenteditable=\"false\">{{title}}</div>" +
+            "</div>" +
+            "<div class=\"div_note_content\">" +
+                "<h3 class=\"note\">Note:</h3>" + 
+                "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" +
+                "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
+                "contenteditable=\"false\">{{content}}</div>"+
+            "</div>" +
+            "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
+            "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
+            "<br>" +
+          "</div>" +
+        "{{/items}}";
 
 
-    var content = Mustache.render(template, data);
+        var content = Mustache.render(template, data);
 
-    $('#contain_all_notes').append(content);
+        $('#contain_all_notes').append(content);
+    } else {
+        console.log(response, "Else is running");
+        return
+    }
 }
 
 
