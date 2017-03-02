@@ -85,33 +85,39 @@ function onFBLogin(response) {
 
  //// Update the DOM with new note /////
 function updateNotes(response){
+    if (response['error_msg']) {
 
-    console.log("updateNotes running");
+        //TODO: FINISH TOMORROW
 
-    var tmpl =
-                "<div class=\"decorate_note_div\">" +
-                "<div class=\"note_created_at\"> {{created_at}} </div>" +
-                "<div class=\"div_note_title\">" +
-                    "<h3 class=\"header_note_title\" >Note Title:</h3>" +
-                    "<div class=\"note_title\" id=\"note_title_{{id}}\"" +
-                    "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
-                    "contenteditable=\"false\"> {{title}} </div>" +
-                "</div>" +
-                 "<div class=\"div_note_content\">" +
-                    "<h3 class=\"note\" >Note:</h3>" + 
-                    "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" + 
-                    "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
-                    "contenteditable=\"false\">{{content}}</div>"+
-                "</div>" +
-                "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
-                "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
-                "<br>" +
-                "</div>";
 
-    var content = Mustache.render(tmpl, response);
+    } else {
+        console.log("updateNotes running");
 
-    $("p.head_font").remove();
-    $(".add_new_note").prepend(content);
+        var tmpl =
+                    "<div class=\"decorate_note_div\">" +
+                    "<div class=\"note_created_at\"> {{created_at}} </div>" +
+                    "<div class=\"div_note_title\">" +
+                        "<h3 class=\"header_note_title\" >Note Title:</h3>" +
+                        "<div class=\"note_title\" id=\"note_title_{{id}}\"" +
+                        "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
+                        "contenteditable=\"false\"> {{title}} </div>" +
+                    "</div>" +
+                     "<div class=\"div_note_content\">" +
+                        "<h3 class=\"note\" >Note:</h3>" + 
+                        "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" + 
+                        "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
+                        "contenteditable=\"false\">{{content}}</div>"+
+                    "</div>" +
+                    "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
+                    "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
+                    "<br>" +
+                    "</div>";
+
+        var content = Mustache.render(tmpl, response);
+
+        $("p.head_font").remove();
+        $(".add_new_note").prepend(content);
+    }
 }
 
 
@@ -123,17 +129,22 @@ function addNewNoteToDB(event){
     var note_title = form.find("[name = \"note_title\"]").val();
     var new_note = form.find("[name = \"new_note\"]").val();
 
-    form.find('[name = "note_title"]').val("");
-    form.find('[name = "new_note"]').val("");
+    if (note_title.length > 200){
+        alert("Please, keep title to fewer than 200 characters you are using" + note_title.length + "characters.");
 
-    var formInputs = {
-        "note_title": note_title,
-        "new_note": new_note
-    };
+    } else {
 
-    $.post("/notes", formInputs, updateNotes);
+        form.find('[name = "note_title"]').val("");
+        form.find('[name = "new_note"]').val("");
+
+        var formInputs = {
+            "note_title": note_title,
+            "new_note": new_note
+        };
+
+        $.post("/notes", formInputs, updateNotes);
+    }
 }
-
 
 //// Reorganize Notes In Ascending/Descending Oder ////
 

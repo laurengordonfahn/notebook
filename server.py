@@ -65,6 +65,10 @@ def add_note():
     note_title = request.form.get("note_title")
     new_note = request.form.get("new_note")
 
+    if len(note_title) > 200:
+        mssg= 'title must be less than 200 characters, your title is %s' % (len(note_title))
+        return jsonify({'error_msg': msg, 'new_note': new_note})
+
     if not current_user():
 
         return redirect ('/')
