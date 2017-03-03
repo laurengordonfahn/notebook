@@ -11,26 +11,22 @@ function statusChangeCallback(response) {
     
     console.log(app_status);
 
-    if (status === 'no' && response.status === 'connected') {
-
-        FB.getLoginStatus(function(response) {
-            $.ajax({
-                url: '/session',
-                type: 'DELETE',
-                success: afterSignOut
-            });
-            console.log("In getLoginStatus");
-        });
-
-    }
-
-    else if (response.status === 'connected') {
+    if (response.status === 'connected') {
       
       onFBLogin(response);
 
     } else if (response.status === 'not_authorized') {
     
-    } else {
+    } 
+    else if (app_status === 'no' && response.status === 'connected') {
+
+        FB.logout(function(response) {
+        
+            console.log("LogOut Because not in Session");
+        });
+
+    }
+    else {
       
         FB.getLoginStatus(function(response) {
             $.ajax({
@@ -88,7 +84,8 @@ function updateNotes(response){
     if (response['error_msg']) {
 
         //TODO: FINISH TOMORROW
-
+        $("#new_note_form").value = response['note_title'];
+        $('#new_note_text_box').value = response['new_note'];
 
     } else {
         console.log("updateNotes running");
@@ -99,15 +96,16 @@ function updateNotes(response){
                     "<div class=\"div_note_title\">" +
                         "<h3 class=\"header_note_title\" >Note Title:</h3>" +
                         "<div class=\"note_title\" id=\"note_title_{{id}}\"" +
-                        "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" + 
+                        "style=\"white-space: break-word; width: 100%; word-wrap: break-word\"" + 
                         "contenteditable=\"false\"> {{title}} </div>" +
                     "</div>" +
                      "<div class=\"div_note_content\">" +
                         "<h3 class=\"note\" >Note:</h3>" + 
                         "<div class=\"note_content\" id=\"notes_from_db_{{id}}\"" + 
-                        "style=\"white-space: pre-line; width: 100%; word-wrap:break-word\"" +
+                        "style=\"white-space: break-word; width: 100%; word-wrap: break-word\"" +
                         "contenteditable=\"false\">{{content}}</div>"+
                     "</div>" +
+                    "<br>" +
                     "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
                     "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
                     "<br>" +

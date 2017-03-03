@@ -141,7 +141,7 @@ h2.head_font{
     /*float: left;*/
     /*clear: both;*/
     margin: 0px;
-    display: flex;
+    /*display: flex;*/
 }
 
 .note_created_at{

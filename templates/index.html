@@ -58,7 +58,6 @@
             </select>
         </form>
 
-
     </div>
 
     <div id="contain_all_notes">
@@ -99,12 +98,14 @@
                     <button class="delete_note" value="{{ note.id }}"> Delete </button>
                     <br>
                 </div>
-                    
+
             {% endfor %}
-            {% else %}
-                <div class="decorate_note_div no_notes">
-                    <p> You do not have any notes. </p>
-                </div>
+
+        {% else %}
+
+            <div class="decorate_note_div no_notes">
+                <p> You do not have any notes. </p>
+            </div>
             
         {% endif %}
 
