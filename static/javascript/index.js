@@ -83,7 +83,6 @@ function onFBLogin(response) {
 function updateNotes(response){
     if (response['error_msg']) {
 
-        //TODO: FINISH TOMORROW
         $("#new_note_form").value = response['note_title'];
         $('#new_note_text_box').value = response['new_note'];
 
@@ -114,7 +113,7 @@ function updateNotes(response){
         var content = Mustache.render(tmpl, response);
 
         $("p.head_font").remove();
-        $(".add_new_note").prepend(content);
+        $("#contain_all_notes").prepend(content);
     }
 }
 
