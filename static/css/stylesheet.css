@@ -98,6 +98,7 @@
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
+        padding-left:5px;
         padding-top: 0px;
         width: 100%;
         height: 200px;
@@ -160,7 +161,7 @@
 /* No Notes Div*/
 .no_notes{
     height: 100px;
-    width: 90%;
+    width: 80%;
     margin: 5px 5px 2px 5px;
     border: solid 2px;
     border-color: gray;
@@ -175,7 +176,119 @@
 }
 
 /* Responsive Design */
+@media screen and (max-width: 1130px) {
 
+    /* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        margin-right: 20px;
+        padding-right:15px;
+        padding-top: 0px;
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+
+    }
+    .no_notes{
+        height: 100px;
+        width: 90%;
+        padding: 10px;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        position: fixed;
+        z-index: -10;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 840px) {
+
+    /* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        margin-right: 20px;
+        padding-right:15px;
+        padding-top: 0px;
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+
+    }
+    .no_notes{
+        height: 100px;
+        width: 88%;
+        padding: 10px;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        position: fixed;
+        z-index: -10;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 700px) {
+
+    /* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        margin-right: 20px;
+        padding-right:15px;
+        padding-top: 0px;
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+
+    }
+    .no_notes{
+        height: 100px;
+        width: 88%;
+        padding: 10px;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        position: fixed;
+        z-index: -10;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 660px) {
+
+    /* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        margin-right: 20px;
+        padding-right:15px;
+        padding-top: 0px;
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+
+    }
+    .no_notes{
+        height: 100px;
+        width: 86%;
+        padding: 10px;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        position: fixed;
+        z-index: -10;
+        text-align: center;
+    }
+}
 @media screen and (max-width: 520px) {
 /* Row 3- Note Header */
     /* Div container for orderby and note header */
@@ -213,6 +326,32 @@
         position: fixed;
         z-index: -10;
     }
+
+     /* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        margin-right: 20px;
+        padding-right:15px;
+        padding-top: 0px;
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+
+    }
+    .no_notes{
+        height: 100px;
+        width: 84%;
+        padding: 10px;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        position: fixed;
+        z-index: -10;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 460px) {
@@ -236,6 +375,32 @@
     #select{
         display: inline-block;
         margin-left:2%;
+    }
+
+     /* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        margin-right: 20px;
+        padding-right:15px;
+        padding-top: 0px;
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+
+    }
+    .no_notes{
+        height: 100px;
+        width: 81%;
+        padding: 10px;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        position: fixed;
+        z-index: -10;
+        text-align: center;
     }
 
 }
