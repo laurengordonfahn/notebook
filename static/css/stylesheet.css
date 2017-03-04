@@ -1,188 +1,161 @@
-/* General font and coloring */
-body{
-    font-family: 'Lato', sans-serif;
-    padding: 2%;
-} 
+/* General App*/
+    /*font and coloring */
+    body{
+        font-family: 'Lato', sans-serif;
+        padding: 2%;
+    } 
 
+    /* App header fonts */
+    .head_font{
+        font-family: 'Amiko', sans-serif;
+    }
 
-/* App Buttons */
-button {
-    font-family: "Lucida Grande" "Lucida Sans Unicode";
-    letter-spacing: 1px;
-    background-color: #4764b3;
-    padding: 5px 8px 5px 8px;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-}
+    /* App Buttons */
+    button {
+        font-family: "Lucida Grande" "Lucida Sans Unicode";
+        letter-spacing: 1px;
+        background-color: #4764b3;
+        padding: 5px 8px 5px 8px;
+        border: none;
+        border-radius: 2px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 12px;
+    }
 
-/* App Inputs */
-input, textarea {
-    border-radius: 5px;
-    border: solid 2px gray;
-}
+/* Row 1- App Header and Login Button */
 
-#div_landing_page_text{
-    border: double 10px;
-    border-color: gray;
-    border-radius: 5px;
-    text-align: center;
-    margin: 5%;
-}
+    /* Login/out button */
+    .fb-login-button{
+        display: block;
+        float: right;
+        top: 20px;
+        margin-right:5%;
+    }
 
-/* App Header */
-#header{
-    display: block;
-}
-.fb-login-button{
-    display: block;
-    float: right;
-    top: 20px;
-    margin-right:5%;
-}
-
-/* App header fonts */
-.head_font{
-    font-family: 'Amiko', sans-serif;
-}
-
-h3.head_font{
-    padding: 50px;
-}
-
-#title_for_new_note {
-    width: 40%;
-    -webkit-user-select: all;  /* Chrome 49+ */
-    -moz-user-select: all;     /* Firefox 43+ */
-    -ms-user-select: all;      /* No support yet */
-    user-select: all;  
-}
-/* Individual note border */
-.decorate_note_div{
-    display: block;
-    border: solid 2px;
-    border-color: gray;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 5px 10px 5px; 
-}
-/* Indivdual Note Alerations */
-/* Move Delete Button to Right Corner */
-
-button.delete_note{
-    display: block;
-    float: right;
-    margin: -1px -2px -2px; 
-}
-
-h2.head_font{
-    display: inline-block;
-}
-
-#contain_all_notes{
-    margin-top: 0px;
-    padding-top: 0px;
-    width: 100%;
-    height: 300px;
-    overflow: scroll;
-}
-
-#new_note_text_box{
-    height: 100px;
-    width: 96%;
-    margin: 5px 5px 2px 5px;
-}
-
-#div_select_header{
-    margin-top: 5%;
-    margin-bottom: 0px;
-}
-
-#note_header{
-    display: block;
-    float: right;
-    position: relative;
-    bottom: 20px;
-    margin-bottom:0px;
-}
-
-#select{
-    display: inline-block;
-}
-
-.decorate_note_div{
-    display: block;
-    overflow: scroll;
-}
-
-.div_note_title{
-    clear: both;
-    margin: 0px;
-    padding-bottom: 0px;
-    position: relative;
-    /*display: flex;*/
-}
-
-.header_note_title{
-    display: inline-block;
-    margin-top: 0px;
-    padding-top: 3px;
-    display: flex;
-}
-
-.note_title{
-    display: inline-block;
-    padding: 5px;
-    /*position: absolute;*/
-    /*float: left;*/
-    /*clear: both;*/
-    margin: 0px;
-    /*display: flex;*/
-}
-
-.note_created_at{
-    width: 100%;
-    display:inline-block;
-    float: right;
-    text-align: right;
-    clear: both;
-}
-
-.div_note_content{
-    clear: both;
-    margin: 0px;
-    padding-top:0px;
-}
-
-.note{
-    display: inline-block;
-}
-
-.note_content{
-    display: inline-block;
-
-}
-
-.add_new_note{
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-.highlight{
-    /*https://css-tricks.com/snippets/css/glowing-blue-input-highlights/
-   */
-    width: 100%;
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    padding: 3px 0px 3px 3px;
-    margin: 5px 1px 3px 0px;
-    border: 2px solid rgba(126, 195, 216, 1);
-    border-radius: 3px;
+    /*App Header */
+    #header{
+        display: block;
+    }
     
-}
+/* Row 2- Not Signed In*/
+    #div_landing_page_text{
+        border: double 10px;
+        border-color: gray;
+        border-radius: 5px;
+        text-align: center;
+        margin: 5%;
+        padding: 50px;
+    }
 
+/* Row 2- Signed-In Input Form*/ 
+
+    /*Inputs Fields */
+    input, textarea {
+        border-radius: 5px;
+        border: solid 2px gray;
+    }
+
+    /* Title Input Field */
+    #title_for_new_note {
+        width: 40%;
+        -webkit-user-select: all;  /* Chrome 49+ */
+        -moz-user-select: all;     /* Firefox 43+ */
+        -ms-user-select: all;      /* No support yet */
+        user-select: all;  
+    }
+    /* Note Input Field */
+    #new_note_text_box{
+        height: 100px;
+        width: 96%;
+        margin: 5px 5px 2px 5px;
+    }
+
+/* Row 3- Note Header */
+
+    /* Div container for orderby and note header */
+    #div_select_header{
+        margin-top: 5%;
+        margin-bottom: 0px;
+    }
+
+    /* Notebook Log header */
+    #note_header{
+        display: block;
+        float: right;
+        position: relative;
+        bottom: 20px;
+        margin-bottom:0px;
+    }
+
+    /* Select Orderby */
+    #select{
+        display: inline-block;
+    }
+    
+/* Row 4 - Note Orderby/Header */
+    /* Div Container - All Notes */
+    #contain_all_notes{
+        margin-top: 0px;
+        padding-top: 0px;
+        width: 100%;
+        height: 300px;
+        overflow: scroll;
+    }
+
+/* Row 5 Notes */
+    /* Individual note border */
+    .decorate_note_div{
+        display: block;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0px 5px 10px 5px; 
+    }
+
+    /* SubRow 1 -Created At Move Left */
+    .note_created_at{
+        width: 100%;
+        display:inline-block;
+        float: right;
+        text-align: right;
+        clear: both;
+    }
+    /* SubRow2- Hold title header and title of note */
+    .div_note_title{
+        clear: both;
+        margin: 5px;
+    }
+    /*SubRow2- Note Header Title */
+    .header_note_title{
+        margin-top: 0px;
+        padding-top: 3px;
+        display: flex;
+    }
+    /* SubRow 3- Div hold Note Header & Note Content */
+    .div_note_content{
+        clear: both;
+    }
+    /* Move Delete Button to Right Corner */
+    button.delete_note{
+        display: block;
+        float: right;
+        margin: -1px -2px -2px; 
+    }
+    /*Edit Note highlight title and content */
+    .highlight{
+        /*https://css-tricks.com/snippets/css/glowing-blue-input-highlights/
+       */
+        width: 100%;
+        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+        border: 2px solid rgba(126, 195, 216, 1);
+        border-radius: 3px;  
+    }
+/* No Notes Div*/
 .no_notes{
     height: 100px;
     width: 90%;
@@ -190,61 +163,78 @@ h2.head_font{
     border: solid 2px;
     border-color: gray;
     border-radius: 5px;
-    text-align: center;
     position: fixed;
     z-index: -10;
+    text-align: center;
+}
+/* No Notes Message*/
+#no_note_message{
+    padding-top: 20px;
 }
 
+/* Responsive Design */
+
 @media screen and (max-width: 520px) {
+/* Row 3- Note Header */
+    /* Div container for orderby and note header */
     #div_select_header{
         margin-bottom: 0px;
         padding: 0px; 
     }
-
+    /* Notebook Log header */
     #note_header{
         padding-right:25%;
         margin-bottom:0px;
     }
-
+    /* Select Orderby */
     #select{
         margin-top: 0px;
-    }    
-    
+    } 
+/* Row 5- Notes */
+    /* SubRow 1 -Created At Move Left */
     .note_created_at{
-    display:inline-block;
-    float: right;
+        display:inline-block;
+        float: right;
     }
 
+    #no_note_message{
+        text-align: center;
+    }
     .no_notes{
-    height: 100px;
-    width: 85%;
-    margin: 5px 5px 2px 5px;
-    border: solid 2px;
-    border-color: gray;
-    border-radius: 5px;
-    text-align: center;
-    position: fixed;
-    z-index: -10;
-}
+        height: 100px;
+        width: 85%;
+        margin: 5px 5px 2px 5px;
+        border: solid 2px;
+        border-color: gray;
+        border-radius: 5px;
+        text-align: center;
+        position: fixed;
+        z-index: -10;
+    }
 }
 
 @media screen and (max-width: 460px) {
+/* Row 1- App Header and Login Button */
 
+    /* Login/out button */
     .fb-login-button{
-    display: block;
-    float: right;
-    top: 20px;
-    margin-bottom: 10%;
+        display: block;
+        float: right;
+        top: 20px;
+        margin-bottom: 10%;
     }
 
+/* Row 3- Note Header */
+    /* Notebook Log header */
     #note_header{
         display: block;
         float: right;
     } 
-
+    /* Select Orderby */
     #select{
         display: inline-block;
         margin-left:2%;
     }
 
 }
+
