@@ -100,7 +100,7 @@
         margin-top: 0px;
         padding-top: 0px;
         width: 100%;
-        height: 300px;
+        height: 200px;
         overflow: scroll;
     }
 
@@ -113,6 +113,7 @@
         border-radius: 5px;
         padding: 10px;
         margin: 0px 5px 10px 5px; 
+
     }
 
     /* SubRow 1 -Created At Move Left */
@@ -137,6 +138,7 @@
     /* SubRow 3- Div hold Note Header & Note Content */
     .div_note_content{
         clear: both;
+        margin: 5px;
     }
     /* Move Delete Button to Right Corner */
     button.delete_note{
@@ -158,7 +160,7 @@
 /* No Notes Div*/
 .no_notes{
     height: 100px;
-    width: 90%;
+    width: 89%;
     margin: 5px 5px 2px 5px;
     border: solid 2px;
     border-color: gray;
@@ -237,4 +239,3 @@
     }
 
 }
-

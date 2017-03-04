@@ -125,8 +125,10 @@ def delete_note(id):
         return redirect ('/')
     
     delete_note_from_db(current_user().id, id)
-     
-    return jsonify({"none": "none"})
+
+    num_notes= len(gather_all_notes_from_db(id))
+
+    return jsonify({"num_notes": num_notes})
 
 @app.route('/session', methods=['DELETE'])
 def log_out():

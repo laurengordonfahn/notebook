@@ -111,12 +111,13 @@ function updateNotes(response){
                     "</div>";
 
         var content = Mustache.render(tmpl, response);
-
+        
+        $(".no_notes").remove();
+        
         $("p.head_font").remove();
         $("#contain_all_notes").prepend(content);
     }
 }
-
 
 function addNewNoteToDB(event){
     
@@ -240,11 +241,9 @@ function updateDBwithEditedNote(event){
     event.preventDefault();
 
     var note_id = $(this).val();
-    // TODO: Had to remove # from line below to make edit work in process
+
     var title_id = "note_title_"+ note_id;
     var note_content_id = "notes_from_db_" + note_id;
-    // var note_title = $(title_id).html();
-    // var note_content = $(note_content_id).html();
     var note_content = document.getElementById(note_content_id).innerText;
     var note_title = document.getElementById(title_id).innerText;
     console.log(note_title, note_content);
@@ -275,6 +274,13 @@ function updateDBwithEditedNote(event){
 function removeNote(response){
     
     console.log("removeNote running");
+    if (response["num_notes"] === 0) {
+        var template = "" +
+            "<div class=\"no_notes\">" +
+                "<p> You do not have any notes. </p>" +
+            "</div>";
+        $("#contain_all_notes").append(template);
+    }
     
 }
 
