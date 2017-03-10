@@ -2,6 +2,10 @@
 var app_id = $(".fb-login-button").attr('value');
 
 // This is called with the results from from FB.getLoginStatus().
+window.onload = function(){
+    FB.logout();
+}
+
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -12,7 +16,7 @@ function statusChangeCallback(response) {
     console.log(app_status);
 
     if (response.status === 'connected') {
-      
+      console.log("connected");
       onFBLogin(response);
 
     } else if (response.status === 'not_authorized') {
@@ -39,6 +43,7 @@ function statusChangeCallback(response) {
     }
 }
 
+// window.load= checkLoginState();
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);

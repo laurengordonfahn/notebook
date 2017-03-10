@@ -69,7 +69,7 @@
     #new_note_text_box{
         height: 100px;
         width: 96%;
-        margin: 5px 5px 2px 5px;
+        margin: 5px 5px 2px 0px;
     }
 
 /* Row 3- Note Header */
@@ -94,15 +94,26 @@
         display: inline-block;
     }
     
+    /* line */
+    #line_serpation{
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 3px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+    }
 /* Row 4 - Note Orderby/Header */
     /* Div Container - All Notes */
     #contain_all_notes{
+        padding-right: 0px;
+        margin-right: 0px;
         margin-top: 0px;
         padding-left:5px;
         padding-top: 0px;
         width: 100%;
         height: 200px;
-        overflow: scroll;
+        overflow: scroll;  
     }
 
 /* Row 5 Notes */
@@ -114,7 +125,6 @@
         border-radius: 5px;
         padding: 10px;
         margin: 0px 5px 10px 5px; 
-
     }
 
     /* SubRow 1 -Created At Move Left */
@@ -161,18 +171,19 @@
 /* No Notes Div*/
 .no_notes{
     height: 100px;
-    width: 80%;
-    margin: 5px 5px 2px 5px;
-    border: solid 2px;
-    border-color: gray;
-    border-radius: 5px;
-    position: fixed;
+    width: 100px;
+    position: absolute;
     z-index: -10;
     text-align: center;
+    display: block;
+
 }
 /* No Notes Message*/
 #no_note_message{
-    padding-top: 20px;
+
+    font-size: 25px;
+    letter-spacing: 5px;
+    /*padding-top: 25px;*/
 }
 
 /* Responsive Design */
@@ -195,10 +206,7 @@
         height: 100px;
         width: 90%;
         padding: 10px;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         position: fixed;
         z-index: -10;
         text-align: center;
@@ -224,13 +232,11 @@
         height: 100px;
         width: 88%;
         padding: 10px;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         position: fixed;
         z-index: -10;
         text-align: center;
+        display: block;
     }
 }
 @media screen and (max-width: 700px) {
@@ -252,10 +258,7 @@
         height: 100px;
         width: 88%;
         padding: 10px;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         position: fixed;
         z-index: -10;
         text-align: center;
@@ -280,10 +283,7 @@
         height: 100px;
         width: 86%;
         padding: 10px;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         position: fixed;
         z-index: -10;
         text-align: center;
@@ -318,10 +318,7 @@
     .no_notes{
         height: 100px;
         width: 85%;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         text-align: center;
         position: fixed;
         z-index: -10;
@@ -344,10 +341,7 @@
         height: 100px;
         width: 84%;
         padding: 10px;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         position: fixed;
         z-index: -10;
         text-align: center;
@@ -360,16 +354,16 @@
     /* Login/out button */
     .fb-login-button{
         display: block;
-        float: right;
         top: 20px;
         margin-bottom: 10%;
+
     }
 
 /* Row 3- Note Header */
     /* Notebook Log header */
     #note_header{
         display: block;
-        float: right;
+
     } 
     /* Select Orderby */
     #select{
@@ -394,10 +388,7 @@
         height: 100px;
         width: 81%;
         padding: 10px;
-        margin: 5px 5px 2px 5px;
-        border: solid 2px;
-        border-color: gray;
-        border-radius: 5px;
+        margin: 5px 5px 2px 0px;
         position: fixed;
         z-index: -10;
         text-align: center;

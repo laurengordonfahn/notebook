@@ -20,6 +20,8 @@
         <h2 class="head_font">Make Notes Simply! <br> Simply Make Notes!
         </h2>
     </div>
+
+    
               
     {% if not 'current_user' in session %}
 
@@ -59,8 +61,7 @@
         </form>
 
     </div>
-    <br>
-
+    <div id="line_serpation"> </div>
     <div id="contain_all_notes">
 
         {% if notes %}
@@ -102,8 +103,8 @@
 
         {% else %}
 
-            <div class="decorate_note_div no_notes">
-                <p id="no_note_message" > You do not have any notes. </p>
+            <div class="no_notes">
+                <p id="no_note_message" > You do not <br> have any notes. </p>
             </div>
             
         {% endif %}
