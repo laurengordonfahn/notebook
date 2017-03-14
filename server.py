@@ -11,6 +11,11 @@ from helper_functions import *
 #for searlizing sqlalchemy objects
 from flask_marshmallow import Marshmallow
 
+#for facebook sign in
+import facebook
+#for environmental variables for facebook API
+import os
+
 
 app = Flask(__name__)
 #for marshmellow searliazer to work
@@ -27,13 +32,31 @@ class UserSchema(ma.Schema):
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 #####################################################
-
 @app.route('/')
 def index():
-    """ Render index.html populate with notes from DB """
-    notes = gather_all_notes_from_db()
+    """Render index.html for sigin-in """
+
+    if not current_user():
+        
+        return render_template("index.html", app_id=facebook_app_id(), user="no")
     
-    return render_template("index.html", notes=notes)
+    notes = gather_all_notes_from_db(current_user().id)
+        
+    return render_template("index.html", app_id=facebook_app_id(), user="yes", notes=notes)
+
+
+@app.route('/session')
+def login():
+    """ Creates User Session and New Account if needed """
+
+    access_token = request.args.get("accessToken")
+
+    if access_token:
+
+        load_user(access_token)
+
+    return redirect('/') 
+
 
 @app.route('/notes', methods=['POST'])
 def add_note():
@@ -42,18 +65,30 @@ def add_note():
     note_title = request.form.get("note_title")
     new_note = request.form.get("new_note")
 
-    note = commit_note_to_db(note_title, new_note)
+    if len(note_title) > 200:
+        msg= 'title must be less than 200 characters, your title is %s' % (len(note_title))
+        return jsonify({'error_msg': msg, 'new_note': new_note, 'note_title': note_title})
 
+    if not current_user():
+
+        return redirect ('/')
+
+    note = commit_note_to_db(current_user().id, note_title, new_note) 
+    
     return jsonify(format_note(note))
 
 @app.route('/notes/edit/<id>', methods=['PUT'])
-def update_edited_note_in_BD(id):
+def update_edited_note_in_db(id):
     """ Replace Note in Database by ID with Edited Note and Title """
     
     note_title = request.form.get('title')
     note_content = request.form.get('content')
+
+    if not current_user():
+        
+        return redirect ('/')
     
-    note = update_note(id, note_title, note_content)
+    note = update_note(current_user().id, id, note_title, note_content)
 
     return jsonify(format_note(note))
 
@@ -62,12 +97,18 @@ def update_edited_note_in_BD(id):
 def descend_order():
     """ Returns notes in Descending Order """
 
+    if not current_user():
+        
+        return redirect ('/')
+
     order_by = request.args.get("order_by") 
     
     if order_by == "most_recent":
-        notes = gather_all_notes_from_db() 
-        
+
+        notes = gather_all_notes_from_db(current_user().id) 
+
     else:
+
         notes =  Note.query.order_by(asc(Note.created_at)).all()
 
     result = users_schema.dump(notes)
@@ -78,18 +119,25 @@ def descend_order():
 @app.route('/notes/<id>', methods=['DELETE'])
 def delete_note(id):
     """Remove note from DB"""
-    
-    delete_note_from_db(id)
-     
-    return jsonify({"none": "none"})
 
-def format_note(note):
-    return {
-        "content": note.content ,
-        "title": note.title,
-        "id": note.id, 
-        "created_at": note.created_at 
-    }
+    if not current_user():
+
+        return redirect ('/')
+    
+    delete_note_from_db(current_user().id, id)
+
+    num_notes= len(gather_all_notes_from_db(id))
+
+    return jsonify({"num_notes": num_notes})
+
+@app.route('/session', methods=['DELETE'])
+def log_out():
+    """ Delete 'current_user' from session and redirect homepage """
+
+    del session['current_user']
+    
+    return jsonify({'none': 'none'})
+
 
 if __name__ == "__main__":
 
