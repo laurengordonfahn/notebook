@@ -63,12 +63,14 @@
 
         {% if notes %}
             
-            {% for note in notes %}
+            {% for note in results %} 
+
         
                 <div class="decorate_note_div">
                         
                     <div class="note_created_at">
-                        {{ note.created_at }} 
+                        {{ note.created_at.split("T")[0] }}
+                
                     </div>
 
                     <div class="div_note_title"> 
@@ -95,7 +97,7 @@
                     <button class="delete_note" value="{{ note.id }}"> Delete </button>
                     <br>
                 </div>
-
+        
             {% endfor %}
 
         {% else %}

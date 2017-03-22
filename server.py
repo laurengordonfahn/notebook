@@ -41,8 +41,10 @@ def index():
         return render_template("index.html", app_id=facebook_app_id(), user="no")
     
     notes = gather_all_notes_from_db(current_user().id)
+
+    results = users_schema.dump(notes).data
         
-    return render_template("index.html", app_id=facebook_app_id(), user="yes", notes=notes)
+    return render_template("index.html", app_id=facebook_app_id(), user="yes", notes=notes, results=results)
 
 
 @app.route('/session')
