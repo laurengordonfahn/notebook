@@ -120,8 +120,6 @@ def descend_order():
 
     return jsonify(data)
    
-    # return jsonify(results.data)
-
 
 @app.route('/notes/<id>', methods=['DELETE'])
 def delete_note(id):
