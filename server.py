@@ -113,9 +113,14 @@ def descend_order():
 
         notes =  Note.query.order_by(asc(Note.created_at)).all()
 
-    result = users_schema.dump(notes)
+    results = users_schema.dump(notes).data
+
+    data = format_created_at(results)
+
+
+    return jsonify(data)
    
-    return jsonify(result.data)
+    # return jsonify(results.data)
 
 
 @app.route('/notes/<id>', methods=['DELETE'])

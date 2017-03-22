@@ -30,7 +30,7 @@ def facebook_app_id():
 ####### GET '/notes' helper functions ########
 def gather_all_notes_from_db(user_id):
     """Gather all notes by user id """
-    
+
     return Note.query.filter_by(user_id=user_id).order_by(desc(Note.id)).all()     
 
 ##### 'POST /notes' helper functions #####
@@ -95,6 +95,22 @@ def update_note(user_id, note_id, note_title, note_content):
     db.session.commit()
 
     return note
+
+#### '/notes/reorder' ######
+def format_created_at(results):
+    """Takes in a marshmellow assisted array of objects Returns a reformated array of objects each with created_at formated """
+
+    data = []
+
+    for result in results:
+        obj = {}
+        obj['content'] = result['content']
+        obj['created_at'] = result['created_at'].split("T")[0]
+        obj['id'] = result['id']
+        obj['title'] = result['title']
+        data.append(obj)
+        
+    return data
 
 #### '/delete_note' helper functions #####
 def delete_note_from_db(user_id, note_id):
