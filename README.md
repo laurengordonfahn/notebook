@@ -2,7 +2,7 @@
 
 ##Project Description:
 
-A simple RESTful flask app that allows a user to create, view, edit, reorder by date, and delete notes. Using Facebook Oauth sign-in. One page fully dynamic. A simple building block application for future projects to be built on-top of.
+A simple RESTful flask app that allows a user to create, view, edit, reorder by date, and delete notes. Using Facebook Oauth2 sign-in. One page fully dynamic. A simple building block application for future projects to be built on-top of.
 
 ##Enjoy This Project Online:
 
@@ -60,10 +60,17 @@ Werkzeug==0.11.15
     $ python model.py
 ```
 
-4) To run the server file server.py :
+2) To run the server file server.py :
 ``` 
     $ python server.py
 ```
+3) Create an account on Facebook developers to support Facebook oauth2 sign-in:
+    1) Visit Facebook Developers: https://developers.facebook.com/
+    2) Follow instructions for creating a web app
+    3) For local hosting use 
+        App Domains: localhost
+        site URL: http://localhost:5000/
+    4) Remember to change your App domain and site URL when deploying!
 
 ## Running the tests:
 1) create a database using postgres and source the database
