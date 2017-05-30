@@ -2,10 +2,11 @@
 
 ##Project Description:
 
-A simple flask app that allows a user to create, view, reorder by date, and delete notes. One page fully dynamic. A simple building block application for future projects to be built on-top of.
+A simple RESTful flask app that allows a user to create, view, edit, reorder by date, and delete notes. Using Facebook Oauth sign-in. One page fully dynamic. A simple building block application for future projects to be built on-top of.
 
-Features coming soon, make note able to be edited. 
+##Enjoy This Project Online:
 
+notebookonline.herokuapp.com
 
 ## Getting Started:
 
@@ -59,14 +60,10 @@ Werkzeug==0.11.15
     $ python model.py
 ```
 
-2) To run the server file server.py :
+4) To run the server file server.py :
 ``` 
     $ python server.py
 ```
-3) Create a developer account on facebook:
-    1) Visit: https://developers.facebook.com/
-    2) Follow the steps on facebook's page for creating a new web app
-    3) Hint: for localhosting only App Domain set to localhost and  site URL set to http://localhost:5000/
 
 ## Running the tests:
 1) create a database using postgres and source the database
@@ -93,13 +90,16 @@ Werkzeug==0.11.15
 * Add a new note with automatic display (complete)
 * Delete a note (complete)
 * Change the date order notes are displayed (complete)
-* Edit and existing note (complete)
-* Facebook Sign-In
+* Edit and existing note (in-progress)
 
 ## Future Build-Out:
 * Build-Out test suites in both Unittests and Jasmine - there are never too many good tests.
+* Add Facebook sign-in
 * Confirm before deletion of a note.
+* Tighten endpoints 
 * Enable users to be able to create different folders to organize notes
+* Deploy on Heroku
+
 
 ## Author:
 * Lauren Gordon-Fahn
