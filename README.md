@@ -59,10 +59,14 @@ Werkzeug==0.11.15
     $ python model.py
 ```
 
-4) To run the server file server.py :
+2) To run the server file server.py :
 ``` 
     $ python server.py
 ```
+3) Create a developer account on facebook:
+    1) Visit: https://developers.facebook.com/
+    2) Follow the steps on facebook's page for creating a new web app
+    3) Hint: for localhosting only App Domain set to localhost and  site URL set to http://localhost:5000/
 
 ## Running the tests:
 1) create a database using postgres and source the database
@@ -89,16 +93,13 @@ Werkzeug==0.11.15
 * Add a new note with automatic display (complete)
 * Delete a note (complete)
 * Change the date order notes are displayed (complete)
-* Edit and existing note (in-progress)
+* Edit and existing note (complete)
+* Facebook Sign-In
 
 ## Future Build-Out:
 * Build-Out test suites in both Unittests and Jasmine - there are never too many good tests.
-* Add Facebook sign-in
 * Confirm before deletion of a note.
-* Tighten endpoints 
 * Enable users to be able to create different folders to organize notes
-* Deploy on Heroku
-
 
 ## Author:
 * Lauren Gordon-Fahn
