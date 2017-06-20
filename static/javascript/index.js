@@ -92,8 +92,7 @@ function updateNotes(response){
         $('#new_note_text_box').value = response['new_note'];
 
     } else {
-        console.log("updateNotes running");
-
+        
         var tmpl =
                     "<div class=\"decorate_note_div\">" +
                     "<div class=\"note_created_at\"> {{created_at}} </div>" +

@@ -120,7 +120,6 @@ def descend_order():
 
     data = format_created_at(results)
 
-
     return jsonify(data)
    
 

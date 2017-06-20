@@ -177,7 +177,8 @@
     /* SubRow2- Hold title header and title of note */
     .div_note_title{
         clear: both;
-        margin: 5px;
+        margin: 0px;
+        padding: 0px;
     }
     /*SubRow2- Note Header Title */
     .header_note_title{
@@ -188,8 +189,23 @@
     /* SubRow 3- Div hold Note Header & Note Content */
     .div_note_content{
         clear: both;
-        margin: 5px;
+        margin: 0px;
+        padding: 0px;
+        white-space:pre-wrap;
     }
+    .note_content {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+    }
+    .note {
+        margin: 0px;
+        padding: 0px;
+    }
+    .hightlight {
+       /*TODO edit this magirn padding */ 
+    }
+
     /* Move Delete Button to Right Corner */
     button.delete_note{
         display: block;
