@@ -30,26 +30,57 @@
     .fb-login-button{
         display: block;
         float: right;
-        top: 20px;
-        margin-right:5%;
     }
 
     /*App Header */
     #header{
         display: block;
+        margin-left: 10%;
+        margin-top: 5%;
+        margin-right: 10%;
+        font-size: 25px;
+        margin-bottom: 5%;
+        background: #eee;
+        height: 120px;
+        border-radius: 5px;
+        padding: 15px;
     }
     
 /* Row 2- Not Signed In*/
+    #outer_landing_page_div{
+        background-color: #e03f3a;
+        opacity: 0.7;
+        height: 400px;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 5px;
+        display: block;
+        overflow: hidden;
+        padding-left:13%;
+        padding-right: 15%;
+        padding-top: 15%;
+        padding-bottom: 15%;
+
+    }
+
     #div_landing_page_text{
+        background-color: white;
         border: double 10px;
         border-color: gray;
         border-radius: 5px;
         text-align: center;
-        margin: 5%;
-        padding: 50px;
+        height: 60%;
+        width: 100%;
+        display: inline-block;
+        padding-top: 30%;
     }
 
 /* Row 2- Signed-In Input Form*/ 
+    /*form */
+    #div_new_note_form {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 
     /*Inputs Fields */
     input, textarea {
@@ -68,8 +99,8 @@
     /* Note Input Field */
     #new_note_text_box{
         height: 100px;
-        width: 96%;
-        margin: 5px 5px 2px 0px;
+        width: 98%;
+        margin: 0;
     }
 
 /* Row 3- Note Header */
@@ -77,6 +108,8 @@
     /* Div container for orderby and note header */
     #div_select_header{
         margin-top: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
         margin-bottom: 0px;
     }
 
@@ -101,19 +134,25 @@
         border: 0;
         border-top: 3px solid #ccc;
         margin: 1em 0;
+        margin-left: 10%;
+        margin-right: 10%;
         padding: 0;
     }
 /* Row 4 - Note Orderby/Header */
     /* Div Container - All Notes */
     #contain_all_notes{
         padding-right: 0px;
-        margin-right: 0px;
+        margin-right: 10%;
+        margin-left: 10%;
         margin-top: 0px;
-        padding-left:5px;
+        /*padding-left:5px;*/
         padding-top: 0px;
-        width: 100%;
+        /*width: 100%;*/
         height: 200px;
-        overflow: scroll;  
+        /*text-align: center;*/
+        overflow: scroll;
+        /*background-color: #e03f3a;  
+        opacity: -10;*/
     }
 
 /* Row 5 Notes */
@@ -176,6 +215,8 @@
     z-index: -10;
     text-align: center;
     display: block;
+    margin-left: 10%;
+    margin-right:10%;
 
 }
 /* No Notes Message*/
@@ -183,6 +224,10 @@
 
     font-size: 25px;
     letter-spacing: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+    z-index: 10;
+    opacity: .9;
     /*padding-top: 25px;*/
 }
 
@@ -193,10 +238,10 @@
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
-        margin-right: 20px;
-        padding-right:15px;
+        margin-right: 10%;
+        /*padding-right:15px;*/
         padding-top: 0px;
-        width: 100%;
+        /*width: 100%;*/
         height: 200px;
         overflow: scroll;
     }
@@ -214,12 +259,16 @@
 }
 
 @media screen and (max-width: 840px) {
+    /* Row 2 - Welcome text space */
 
+    #div_landing_page_text{
+        text-align: left;
+        padding: 0px;
+    }
     /* Row 4 - Note Orderby/Header */
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
-        margin-right: 20px;
         padding-right:15px;
         padding-top: 0px;
         width: 100%;
@@ -245,7 +294,6 @@
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
-        margin-right: 20px;
         padding-right:15px;
         padding-top: 0px;
         width: 100%;
@@ -270,7 +318,6 @@
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
-        margin-right: 20px;
         padding-right:15px;
         padding-top: 0px;
         width: 100%;
@@ -328,7 +375,6 @@
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
-        margin-right: 20px;
         padding-right:15px;
         padding-top: 0px;
         width: 100%;
@@ -375,7 +421,6 @@
     /* Div Container - All Notes */
     #contain_all_notes{
         margin-top: 0px;
-        margin-right: 20px;
         padding-right:15px;
         padding-top: 0px;
         width: 100%;

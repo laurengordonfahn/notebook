@@ -40,9 +40,12 @@ def index():
         
         return render_template("index.html", app_id=facebook_app_id(), user="no")
     
-    notes = gather_all_notes_from_db(current_user().id)
+    info = gather_all_notes_from_db(current_user().id)
+    
 
-    results = users_schema.dump(notes).data
+    results = users_schema.dump(info).data
+    
+    notes = format_created_at(results)
         
     return render_template("index.html", app_id=facebook_app_id(), user="yes", notes=notes, results=results)
 

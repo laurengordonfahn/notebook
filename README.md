@@ -70,6 +70,9 @@ Werkzeug==0.11.15
     3) For local hosting use 
         App Domains: localhost
         site URL: http://localhost:5000/
+    4) For site use
+        App Domains: notebookonline.herokuapp
+        site Url: http://notebookonline.herokuapp.com/
     4) Remember to change your App domain and site URL when deploying!
 
 ## Running the tests:

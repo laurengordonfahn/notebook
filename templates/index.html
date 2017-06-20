@@ -14,18 +14,19 @@
 
     <div id="header">
         <div id="log_in_button" class="fb-login-button" value="{{ app_id }}" data-max-rows="1" data-size="large" data-auto-logout-link='true' scope="email" data-show-faces="false" data-auto-logout-link="true"  onlogin="checkLoginState"></div>
-        <h2 class="head_font">Make Notes Simply! <br> Simply Make Notes!
-        </h2>
+        <div class="head_font title">Make Notes Simply! <br> Simply Make Notes!
+        </div>
     </div>
 
     
               
     {% if not 'current_user' in session %}
+    <div id="outer_landing_page_div">
+        <div id="div_landing_page_text">
 
-    <div id="div_landing_page_text">
+            <h3 class="head_font welcomeMsg"> The written word is a wish that can be shared <br><br> A note is a dream at it's begining </h3>
 
-        <h3 class="head_font"> The written word is a wish that can be shared <br><br> A note is a dream at it's begining </h3>
-
+        </div>
     </div>
 
     {% endif %}
@@ -63,13 +64,14 @@
 
         {% if notes %}
             
-            {% for note in results %} 
+            {% for note in notes %} 
 
         
                 <div class="decorate_note_div">
                         
                     <div class="note_created_at">
-                        {{ note.created_at.split("T")[0] }}
+                        {{ note.created_at }}
+                        <!-- .created_at.split("T")[0] -->
                 
                     </div>
 
