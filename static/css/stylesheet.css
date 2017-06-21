@@ -184,33 +184,42 @@
     .header_note_title{
         margin-top: 0px;
         padding-top: 3px;
-        display: flex;
+        margin-bottom: 10px;
     }
+    
     /* SubRow 3- Div hold Note Header & Note Content */
     .div_note_content{
-        clear: both;
-        margin: 0px;
+        /*clear: both;*/
+        margin: -20px 0px -20px 0px;
         padding: 0px;
+        display: block;
         white-space:pre-wrap;
     }
     .note_content {
-        margin: 0px;
+        margin:  -20px 0px 0px 0px;
         padding: 0px;
         display: inline-block;
+        float: left;
+        
     }
     .note {
+        display: inline-block;
         margin: 0px;
+        margin-bottom: -35px;
         padding: 0px;
-    }
-    .hightlight {
-       /*TODO edit this magirn padding */ 
-    }
+        float: left;
 
+    }
+    button.edit_button{
+        /*margin-top: -20px;*/
+       /* float: left;*/
+    }
     /* Move Delete Button to Right Corner */
     button.delete_note{
         display: block;
         float: right;
         margin: -1px -2px -2px; 
+        /*margin-top: -20px;*/
     }
     /*Edit Note highlight title and content */
     .highlight{

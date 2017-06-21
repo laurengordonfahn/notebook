@@ -108,10 +108,9 @@ function updateNotes(response){
                         "style=\"white-space: break-word; width: 100%; word-wrap: break-word\"" +
                         "contenteditable=\"false\">{{content}}</div>"+
                     "</div>" +
-                    "<br>" +
                     "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
                     "<button class=\"delete_note\" value=\"{{id}}\"> Delete </button>" +
-                    "<br>" +
+                    "<br/>" +
                     "</div>";
 
         var content = Mustache.render(tmpl, response);
@@ -177,7 +176,7 @@ function updateNoteOrder(response){
             "</div>" +
             "<button class=\"edit_button\" value=\"{{id}}\"> Edit Note </button>" +
             "<button class=\"delete_note\" value=\" {{id}}\"> Delete </button>" +
-            "<br>" +
+            "<br/>" +
           "</div>" +
         "{{/items}}";
 
