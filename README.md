@@ -89,10 +89,10 @@ Werkzeug==0.11.15
 3) Create an account on Facebook developers to support Facebook oauth2 sign-in:
     1) Visit Facebook Developers: https://developers.facebook.com/
     2) Follow instructions for creating a web app
-    3) For local hosting use 
+    3) For local hosting use i.e.
         App Domains: localhost
         site URL: http://localhost:5000/
-    4) For web use
+    4) For web use i.e.
         App Domains: notebookonline.herokuapp
         site Url: http://notebookonline.herokuapp.com/
     5) Remember to change your App domain and site URL when deploying!
