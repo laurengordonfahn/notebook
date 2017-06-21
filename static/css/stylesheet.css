@@ -30,6 +30,7 @@
     .fb-login-button{
         display: block;
         float: right;
+        margin-bottom: 10px;
     }
 
     /*App Header */
@@ -39,25 +40,29 @@
         margin-top: 5%;
         margin-right: 10%;
         font-size: 25px;
-        margin-bottom: 5%;
+        margin-bottom: 20px;
         background: #eee;
-        height: 120px;
         border-radius: 5px;
-        padding: 15px;
+        padding: 15px; 
+        padding-bottom: 45px;
+    }
+
+    .head_font .title {
+        height: 100%;
+        display: inline-block;
     }
     
 /* Row 2- Not Signed In*/
     #outer_landing_page_div{
         background-color: #e03f3a;
         opacity: 0.7;
-        height: 400px;
         margin-left: 10%;
         margin-right: 10%;
         border-radius: 5px;
-        display: block;
+        display: flex;
         overflow: hidden;
         padding-left:13%;
-        padding-right: 15%;
+        padding-right: 13%;
         padding-top: 15%;
         padding-bottom: 15%;
 
@@ -70,9 +75,13 @@
         border-radius: 5px;
         text-align: center;
         height: 60%;
-        width: 100%;
+        width: 80%;
+        margin: 0 auto;
         display: inline-block;
-        padding-top: 30%;
+    }
+
+    .welcomeMsg {
+        padding: 10%;
     }
 
 /* Row 2- Signed-In Input Form*/ 
