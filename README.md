@@ -15,16 +15,38 @@ notebookonline.herokuapp.com
 1) Download the project in a directory of its own. Navigate into the new directory and type in the following command.  
 
     $ git clone https://github.com/laurengordonfahn/simple_notebook_project
+2) Create secrets.sh file and .gitignore file
 
-2) Create a virtual environment using virtualenv to house the required frameworks if you are unsure you have this capacity visit https://virtualenv.pypa.io/en/stable/: 
+```
+$ touch secrets.sh
+$ touch .gitignore
+```
+
+3) Add enviromental variables to secrets.sh using the export library (see facebook section for explaination and example)
+4) Add secrets.sh and any other private files not to be seen on github to .gitingore file 
+
+```
+env/
+*.sh
+*.pyc
+```
+
+4) Create a virtual environment using virtualenv to house the required frameworks. Source the secrets file to this enviroment after(see number 6 in facebook section for contents of secrets.sh file) if you are unsure you have this capacity visit https://virtualenv.pypa.io/en/stable/: 
 
 ```
 $ virtualenv env
 $ source env/bin/activate
+$ 
 ```
 
-3) Pip install will enable installation of the project requirements
+5) Pip install will enable installation of the project requirements
 If you are uncertain if you have pip install visit the website : https://pip.pypa.io/en/stable/installing/
+
+6) Once the env is sourced secrets.sh dependencies are loaded so you can source secrets.sh. This is to load the enviromental variables into the evniroment.
+
+```
+$ source secrets.sh
+```
 
 4) Make sure you are in the first level of your newly created directory then pip install the requirements, the file will be read into the environment automatically:
 
@@ -70,18 +92,27 @@ Werkzeug==0.11.15
     3) For local hosting use 
         App Domains: localhost
         site URL: http://localhost:5000/
-    4) For site use
+    4) For web use
         App Domains: notebookonline.herokuapp
         site Url: http://notebookonline.herokuapp.com/
-    4) Remember to change your App domain and site URL when deploying!
+    5) Remember to change your App domain and site URL when deploying!
+    6) The Facebook sign-in feature requires an API key that must be loaded into your local enviroment or the host server enviroment but can not be shared with your users. This secrete variable goes into the secrets.sh file you have made for your project. For this project the following code is used to represent the facebook APP_ID.
+
+    ```
+    export APP_ID="The number facebook assigns you in string format"
+
+    ``` 
+    Access this info in you code as shown in the server.py code using the os library
 
 ## Running the tests:
 1) create a database using postgres and source the database
+
 ```
     $ createdb notebooktest
     $ python test_model.py
 ```
 2) Run the unittests, Jasmine tests are under construction at this time
+
 ```
    $ python test_server.py
 ```
