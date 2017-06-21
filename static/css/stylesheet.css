@@ -145,14 +145,9 @@
         margin-right: 10%;
         margin-left: 10%;
         margin-top: 0px;
-        /*padding-left:5px;*/
         padding-top: 0px;
-        /*width: 100%;*/
         height: 200px;
-        /*text-align: center;*/
         overflow: scroll;
-        /*background-color: #e03f3a;  
-        opacity: -10;*/
     }
 
 /* Row 5 Notes */
@@ -184,7 +179,7 @@
     .header_note_title{
         margin-top: 0px;
         padding-top: 3px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
     
     /* SubRow 3- Div hold Note Header & Note Content */
@@ -195,13 +190,15 @@
         display: block;
         white-space:pre-wrap;
     }
+
+    /*SubRow3- Note Content negative margins to shrink div */
     .note_content {
-        margin:  -20px 0px 0px 0px;
+        margin:  -20px 0px 5px 0px;
         padding: 0px;
         display: inline-block;
-        float: left;
-        
+        float: left;   
     }
+
     .note {
         display: inline-block;
         margin: 0px;
@@ -210,10 +207,7 @@
         float: left;
 
     }
-    button.edit_button{
-        /*margin-top: -20px;*/
-       /* float: left;*/
-    }
+    
     /* Move Delete Button to Right Corner */
     button.delete_note{
         display: block;
